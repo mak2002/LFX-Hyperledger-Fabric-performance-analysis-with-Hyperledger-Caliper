@@ -1,0 +1,33 @@
++ CHAINCODE_DIR=/usr/local/src
++ cd /usr/local/src
++ npm start -- --peer.address peer0.org1.example.com:7052
+
+> asset-transfer-sbe@0.0.1 start
+> fabric-chaincode-node start "--peer.address" "peer0.org1.example.com:7052"
+
+2023-07-15T13:56:11.670Z info [c-api:./lib/annotations/object.js]                 @Object args: Target -> %s "Function" 
+2023-07-15T13:56:11.699Z info [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> CreateAsset, Commit -> true,","Target ->","AssetContract" 
+2023-07-15T13:56:11.724Z info [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> ReadAsset, Commit -> false,","Target ->","AssetContract" 
+2023-07-15T13:56:11.745Z info [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> UpdateAsset, Commit -> true,","Target ->","AssetContract" 
+2023-07-15T13:56:11.753Z info [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> DeleteAsset, Commit -> true,","Target ->","AssetContract" 
+2023-07-15T13:56:11.760Z info [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> TransferAsset, Commit -> true,","Target ->","AssetContract" 
+2023-07-15T13:56:11.764Z info [c-api:./lib/annotations/info.js]                   @Info args: "Info -> [object Object],","Target ->","AssetContract" 
+2023-07-15T13:56:11.893Z info [c-api:contracts-spi/bootstrap.js]                  No metadata file supplied in contract, introspection will generate all the data  
+2023-07-15T13:56:12.325Z info [c-api:lib/handler.js]                              Creating new Chaincode Support Client for peer comminications  
+2023-07-15T13:56:12.356Z info [c-api:lib/chaincode.js]                            Registering with peer peer0.org1.example.com:7052 as chaincode "sbe_1.0:459765c5850b4d95dd3d3db1b34bad94529471623ef0af143e44ae397332fbe9"  
+2023-07-15T13:56:12.408Z info [c-api:fabric-shim/cli]                             Bootstrap process completed  
+2023-07-15T13:56:12.649Z info [c-api:lib/handler.js]                              Successfully registered with peer node. State transferred to "established"  
+2023-07-15T13:56:12.654Z info [c-api:lib/handler.js]                              Successfully established communication with peer node. State transferred to "ready"  
+2023-07-15T13:56:50.997Z info [c-api:lib/handler.js]                              [mychannel-2fcdebf8] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
+2023-07-15T13:57:07.544Z info [c-api:lib/handler.js]                              [mychannel-f92bc634] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
+2023-07-15T13:57:29.578Z info [c-api:lib/handler.js]                              [mychannel-7e3fb116] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
+2023-07-15T13:57:38.575Z info [c-api:lib/handler.js]                              [mychannel-a0b9baaf] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
+2023-07-15T13:57:47.963Z info [c-api:lib/handler.js]                              [mychannel-923e0297] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
+2023-07-15T13:58:18.680Z info [c-api:lib/handler.js]                              [mychannel-3cea6e70] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
+2023-07-15T13:58:33.857Z info [c-api:lib/handler.js]                              [mychannel-97dc1c6b] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
+
+
+
+
+
+

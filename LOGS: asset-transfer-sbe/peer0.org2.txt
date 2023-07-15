@@ -1,0 +1,145 @@
+2023-07-15 12:49:48.604 UTC 0001 INFO [nodeCmd] serve -> Starting peer:
+ Version: 2.4.0
+ Commit SHA: 41b6586
+ Go version: go1.16.7
+ OS/Arch: linux/amd64
+ Chaincode:
+  Base Docker Label: org.hyperledger.fabric
+  Docker Namespace: hyperledger
+2023-07-15 12:49:48.611 UTC 0002 INFO [peer] getLocalAddress -> Auto-detected peer address: 172.22.0.4:9051
+2023-07-15 12:49:48.611 UTC 0003 INFO [peer] getLocalAddress -> Returning peer0.org2.example.com:9051
+2023-07-15 12:49:48.659 UTC 0004 INFO [nodeCmd] initGrpcSemaphores -> concurrency limit for endorser service is 2500
+2023-07-15 12:49:48.660 UTC 0005 INFO [nodeCmd] initGrpcSemaphores -> concurrency limit for deliver service is 2500
+2023-07-15 12:49:48.660 UTC 0006 INFO [nodeCmd] serve -> Starting peer with TLS enabled
+2023-07-15 12:49:48.730 UTC 0007 INFO [certmonitor] trackCertExpiration -> The enrollment certificate will expire on 2033-07-12 12:45:00 +0000 UTC
+2023-07-15 12:49:48.731 UTC 0008 INFO [certmonitor] trackCertExpiration -> The server TLS certificate will expire on 2033-07-12 12:45:00 +0000 UTC
+2023-07-15 12:49:48.734 UTC 0009 INFO [ledgermgmt] NewLedgerMgr -> Initializing LedgerMgr
+2023-07-15 12:49:48.767 UTC 000a INFO [leveldbhelper] openDBAndCheckFormat -> DB is empty Setting db format as 2.0
+2023-07-15 12:49:48.769 UTC 000b INFO [blkstorage] NewProvider -> Creating new file ledger directory at /var/hyperledger/production/ledgersData/chains/chains
+2023-07-15 12:49:48.791 UTC 000c INFO [leveldbhelper] openDBAndCheckFormat -> DB is empty Setting db format as 2.0
+2023-07-15 12:49:48.834 UTC 000d INFO [leveldbhelper] openDBAndCheckFormat -> DB is empty Setting db format as 2.0
+2023-07-15 12:49:48.838 UTC 000e INFO [ledgermgmt] NewLedgerMgr -> Initialized LedgerMgr
+2023-07-15 12:49:48.849 UTC 000f INFO [gossip.service] New -> Initialize gossip with endpoint peer0.org2.example.com:9051
+2023-07-15 12:49:48.866 UTC 0010 INFO [gossip.gossip] New -> Creating gossip service with self membership of Endpoint: peer0.org2.example.com:9051, InternalEndpoint: peer0.org2.example.com:9051, PKI-ID: d5bcc0a1725dbb6ca8c72d0c369fd76725916bfc552ab5e61b7baa1acef16bb9, Metadata: 
+2023-07-15 12:49:48.870 UTC 0011 INFO [lifecycle] InitializeLocalChaincodes -> Initialized lifecycle cache with 0 already installed chaincodes
+2023-07-15 12:49:48.872 UTC 0012 INFO [gossip.gossip] start -> Gossip instance peer0.org2.example.com:9051 started
+2023-07-15 12:49:48.877 UTC 0013 INFO [nodeCmd] computeChaincodeEndpoint -> Entering computeChaincodeEndpoint with peerHostname: peer0.org2.example.com
+2023-07-15 12:49:48.877 UTC 0014 INFO [nodeCmd] computeChaincodeEndpoint -> Exit with ccEndpoint: peer0.org2.example.com:9052
+2023-07-15 12:49:48.903 UTC 0015 INFO [sccapi] DeploySysCC -> deploying system chaincode 'lscc'
+2023-07-15 12:49:48.906 UTC 0016 INFO [sccapi] DeploySysCC -> deploying system chaincode 'cscc'
+2023-07-15 12:49:48.907 UTC 0017 INFO [sccapi] DeploySysCC -> deploying system chaincode 'qscc'
+2023-07-15 12:49:48.907 UTC 0018 INFO [sccapi] DeploySysCC -> deploying system chaincode '_lifecycle'
+2023-07-15 12:49:48.907 UTC 0019 INFO [nodeCmd] serve -> Deployed system chaincodes
+2023-07-15 12:49:48.911 UTC 001a INFO [discovery] NewService -> Created with config TLS: true, authCacheMaxSize: 1000, authCachePurgeRatio: 0.750000
+2023-07-15 12:49:48.911 UTC 001b INFO [nodeCmd] serve -> Discovery service activated
+2023-07-15 12:49:48.912 UTC 001c INFO [nodeCmd] serve -> Starting peer with Gateway enabled
+2023-07-15 12:49:48.912 UTC 001d INFO [nodeCmd] serve -> Starting peer with ID=[peer0.org2.example.com], network ID=[dev], address=[peer0.org2.example.com:9051]
+2023-07-15 12:49:48.916 UTC 001e INFO [nodeCmd] serve -> Started peer with ID=[peer0.org2.example.com], network ID=[dev], address=[peer0.org2.example.com:9051]
+2023-07-15 12:49:48.916 UTC 001f INFO [kvledger] LoadPreResetHeight -> Loading prereset height from path [/var/hyperledger/production/ledgersData/chains]
+2023-07-15 12:49:48.916 UTC 0020 INFO [blkstorage] preResetHtFiles -> No active channels passed
+2023-07-15 13:29:25.164 UTC 0021 INFO [endorser] callChaincode -> finished chaincode: _lifecycle duration: 11ms channel= txID=56abcc2d
+2023-07-15 13:29:25.166 UTC 0022 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.22.0.1:50548 grpc.code=OK grpc.call_duration=27.673667ms
+2023-07-15 13:29:56.864 UTC 0023 INFO [lifecycle] InstallChaincode -> Successfully installed chaincode with package ID 'sbe_1.0:459765c5850b4d95dd3d3db1b34bad94529471623ef0af143e44ae397332fbe9'
+2023-07-15 13:29:56.866 UTC 0024 INFO [endorser] callChaincode -> finished chaincode: _lifecycle duration: 31585ms channel= txID=fe7ccf15
+2023-07-15 13:29:56.866 UTC 0025 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.22.0.1:50564 grpc.code=OK grpc.call_duration=31.591604057s
+2023-07-15 13:30:45.607 UTC 0026 INFO [ledgermgmt] CreateLedger -> Creating ledger [mychannel] with genesis block
+2023-07-15 13:30:45.614 UTC 0027 INFO [blkstorage] newBlockfileMgr -> Getting block information from block storage
+2023-07-15 13:30:45.648 UTC 0028 INFO [kvledger] commit -> [mychannel] Committed block [0] with 1 transaction(s) in 20ms (state_validation=7ms block_and_pvtdata_commit=7ms state_commit=4ms) commitHash=[]
+2023-07-15 13:30:45.650 UTC 0029 INFO [kvledger] updateLedgerStatus -> Updating ledger [mychannel] status to [ACTIVE]
+2023-07-15 13:30:45.651 UTC 002a INFO [ledgermgmt] CreateLedger -> Created ledger [mychannel] with genesis block
+2023-07-15 13:30:45.679 UTC 002b ERRO [gateway] configUpdate -> Failed update orderer config channel=mychannel err="failed to get config for channel [mychannel]: could not get last config for channel mychannel"
+2023-07-15 13:30:45.682 UTC 002c WARN [peer.orderers] Update -> Config defines both orderer org specific endpoints and global endpoints, global endpoints will be ignored channel=mychannel
+2023-07-15 13:30:45.687 UTC 002d INFO [gossip.gossip] JoinChan -> Joining gossip network of channel mychannel with 2 organizations
+2023-07-15 13:30:45.687 UTC 002e INFO [gossip.gossip] learnAnchorPeers -> No configured anchor peers of Org2MSP for channel mychannel to learn about
+2023-07-15 13:30:45.687 UTC 002f INFO [gossip.gossip] learnAnchorPeers -> No configured anchor peers of Org1MSP for channel mychannel to learn about
+2023-07-15 13:30:45.696 UTC 0030 INFO [gossip.state] NewGossipStateProvider -> Updating metadata information for channel mychannel, current ledger sequence is at = 0, next expected block is = 1
+2023-07-15 13:30:45.697 UTC 0031 INFO [deliveryClient] StartDeliverForChannel -> This peer will retrieve blocks from ordering service and disseminate to other peers in the organization for channel mychannel
+2023-07-15 13:30:45.705 UTC 0032 INFO [endorser] callChaincode -> finished chaincode: cscc duration: 135ms channel= txID=9c46bd1e
+2023-07-15 13:30:45.706 UTC 0033 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.22.0.1:33094 grpc.code=OK grpc.call_duration=141.551126ms
+2023-07-15 13:30:49.542 UTC 0034 INFO [gossip.privdata] StoreBlock -> Received block [1] from buffer channel=mychannel
+2023-07-15 13:30:49.591 UTC 0035 WARN [peer.orderers] Update -> Config defines both orderer org specific endpoints and global endpoints, global endpoints will be ignored channel=mychannel
+2023-07-15 13:30:49.594 UTC 0036 INFO [gossip.gossip] JoinChan -> Joining gossip network of channel mychannel with 2 organizations
+2023-07-15 13:30:49.594 UTC 0037 INFO [gossip.gossip] learnAnchorPeers -> No configured anchor peers of Org2MSP for channel mychannel to learn about
+2023-07-15 13:30:49.594 UTC 0038 INFO [gossip.gossip] learnAnchorPeers -> Learning about the configured anchor peers of Org1MSP for channel mychannel: [{peer0.org1.example.com 7051}]
+2023-07-15 13:30:49.598 UTC 0039 INFO [committer.txvalidator] Validate -> [mychannel] Validated block [1] in 55ms
+2023-07-15 13:30:49.617 UTC 003a INFO [kvledger] commit -> [mychannel] Committed block [1] with 1 transaction(s) in 16ms (state_validation=1ms block_and_pvtdata_commit=6ms state_commit=7ms) commitHash=[47dc540c94ceb704a23875c11273e16bb0b8a87aed84de911f2133568115f254]
+2023-07-15 13:30:50.688 UTC 003b INFO [gossip.channel] reportMembershipChanges -> [[mychannel] Membership view has changed. peers went online:  [[peer0.org1.example.com:7051 ]] , current view:  [[peer0.org1.example.com:7051 ]]]
+2023-07-15 13:30:53.154 UTC 003c INFO [gossip.privdata] StoreBlock -> Received block [2] from buffer channel=mychannel
+2023-07-15 13:30:53.193 UTC 003d WARN [peer.orderers] Update -> Config defines both orderer org specific endpoints and global endpoints, global endpoints will be ignored channel=mychannel
+2023-07-15 13:30:53.197 UTC 003e INFO [gossip.gossip] JoinChan -> Joining gossip network of channel mychannel with 2 organizations
+2023-07-15 13:30:53.197 UTC 003f INFO [gossip.gossip] learnAnchorPeers -> Learning about the configured anchor peers of Org1MSP for channel mychannel: [{peer0.org1.example.com 7051}]
+2023-07-15 13:30:53.197 UTC 0040 INFO [gossip.gossip] learnAnchorPeers -> Learning about the configured anchor peers of Org2MSP for channel mychannel: [{peer0.org2.example.com 9051}]
+2023-07-15 13:30:53.198 UTC 0041 INFO [gossip.gossip] learnAnchorPeers -> Anchor peer for channel mychannel with same endpoint, skipping connecting to myself
+2023-07-15 13:30:53.202 UTC 0042 INFO [committer.txvalidator] Validate -> [mychannel] Validated block [2] in 48ms
+2023-07-15 13:30:53.213 UTC 0043 INFO [kvledger] commit -> [mychannel] Committed block [2] with 1 transaction(s) in 9ms (state_validation=0ms block_and_pvtdata_commit=5ms state_commit=1ms) commitHash=[5f88b61407b149a48413433f4670c46531e5c4a8febdc339a9536ff8716a559e]
+2023-07-15 13:30:53.228 UTC 0044 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2023-07-15T13:30:55.225Z grpc.peer_address=172.22.0.2:45434 grpc.peer_subject="CN=peer0.org1.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=2.199583ms
+2023-07-15 13:30:53.242 UTC 0045 INFO [gossip.comm] GossipStream -> Peer f003ede4700ff29e93d6b3758d1802a8f98d48e3e8601f1127a14e1b60bc49be (172.22.0.2:45434) probed us
+2023-07-15 13:30:53.242 UTC 0046 INFO [comm.grpc.server] 1 -> streaming call completed grpc.service=gossip.Gossip grpc.method=GossipStream grpc.request_deadline=2023-07-15T13:31:03.232Z grpc.peer_address=172.22.0.2:45434 grpc.peer_subject="CN=peer0.org1.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=8.61175ms
+2023-07-15 13:55:44.018 UTC 0047 INFO [endorser] callChaincode -> finished chaincode: _lifecycle duration: 4ms channel= txID=0490a3bb
+2023-07-15 13:55:44.019 UTC 0048 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.22.0.1:56874 grpc.code=OK grpc.call_duration=7.934459ms
+2023-07-15 13:55:46.414 UTC 0049 INFO [gossip.privdata] StoreBlock -> Received block [3] from buffer channel=mychannel
+2023-07-15 13:55:46.459 UTC 004a INFO [committer.txvalidator] Validate -> [mychannel] Validated block [3] in 43ms
+2023-07-15 13:55:46.482 UTC 004b INFO [kvledger] commit -> [mychannel] Committed block [3] with 1 transaction(s) in 16ms (state_validation=4ms block_and_pvtdata_commit=8ms state_commit=2ms) commitHash=[9b1a0700d0550209deee8b1cd206314beeb27121a5ed78f86ade78cb9568db52]
+2023-07-15 13:55:52.795 UTC 004c INFO [lifecycle] CheckCommitReadiness -> Successfully checked commit readiness of chaincode name 'sbe' on channel 'mychannel' with definition {sequence: 1, endorsement info: (version: '1.0', plugin: 'escc', init required: false), validation info: (plugin: 'vscc', policy: '12202f4368616e6e656c2f4170706c69636174696f6e2f456e646f7273656d656e74'), collections: (<nil>)}
+2023-07-15 13:55:52.797 UTC 004d INFO [endorser] callChaincode -> finished chaincode: _lifecycle duration: 17ms channel=mychannel txID=30917fef
+2023-07-15 13:55:52.801 UTC 004e INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.22.0.1:43608 grpc.code=OK grpc.call_duration=31.8205ms
+2023-07-15 13:55:52.925 UTC 004f INFO [lifecycle] ApproveChaincodeDefinitionForOrg -> Successfully endorsed chaincode approval with name 'sbe', package ID 'sbe_1.0:459765c5850b4d95dd3d3db1b34bad94529471623ef0af143e44ae397332fbe9', on channel 'mychannel' with definition {sequence: 1, endorsement info: (version: '1.0', plugin: 'escc', init required: false), validation info: (plugin: 'vscc', policy: '12202f4368616e6e656c2f4170706c69636174696f6e2f456e646f7273656d656e74'), collections: ()}
+2023-07-15 13:55:52.926 UTC 0050 INFO [endorser] callChaincode -> finished chaincode: _lifecycle duration: 9ms channel=mychannel txID=9d4a1eb1
+2023-07-15 13:55:52.936 UTC 0051 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.22.0.1:43628 grpc.code=OK grpc.call_duration=22.965833ms
+2023-07-15 13:55:54.989 UTC 0052 INFO [gossip.privdata] StoreBlock -> Received block [4] from buffer channel=mychannel
+2023-07-15 13:55:55.007 UTC 0053 INFO [committer.txvalidator] Validate -> [mychannel] Validated block [4] in 17ms
+2023-07-15 13:55:55.013 UTC 0054 INFO [gossip.privdata] RetrievePvtdata -> Successfully fetched all 1 eligible collection private write sets for block [4] (0 from local cache, 1 from transient store, 0 from other peers) channel=mychannel
+2023-07-15 13:55:55.028 UTC 0055 INFO [kvledger] commit -> [mychannel] Committed block [4] with 1 transaction(s) in 14ms (state_validation=2ms block_and_pvtdata_commit=8ms state_commit=2ms) commitHash=[da5988998c672ffc1e543508acdfb03193828f0af0e0c7ca40b2b5c1e00c687b]
+2023-07-15 13:55:55.037 UTC 0056 INFO [comm.grpc.server] 1 -> streaming call completed grpc.service=protos.Deliver grpc.method=DeliverFiltered grpc.request_deadline=2023-07-15T13:56:22.94Z grpc.peer_address=172.22.0.1:43630 error="context finished before block retrieved: context canceled" grpc.code=Unknown grpc.call_duration=2.096245543s
+2023-07-15 13:56:01.334 UTC 0057 INFO [lifecycle] CheckCommitReadiness -> Successfully checked commit readiness of chaincode name 'sbe' on channel 'mychannel' with definition {sequence: 1, endorsement info: (version: '1.0', plugin: 'escc', init required: false), validation info: (plugin: 'vscc', policy: '12202f4368616e6e656c2f4170706c69636174696f6e2f456e646f7273656d656e74'), collections: (<nil>)}
+2023-07-15 13:56:01.335 UTC 0058 INFO [endorser] callChaincode -> finished chaincode: _lifecycle duration: 5ms channel=mychannel txID=84378c29
+2023-07-15 13:56:01.336 UTC 0059 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.22.0.1:43932 grpc.code=OK grpc.call_duration=10.061667ms
+2023-07-15 13:56:01.506 UTC 005a INFO [lifecycle] CheckCommitReadiness -> Successfully checked commit readiness of chaincode name 'sbe' on channel 'mychannel' with definition {sequence: 1, endorsement info: (version: '1.0', plugin: 'escc', init required: false), validation info: (plugin: 'vscc', policy: '12202f4368616e6e656c2f4170706c69636174696f6e2f456e646f7273656d656e74'), collections: (<nil>)}
+2023-07-15 13:56:01.508 UTC 005b INFO [lifecycle] CommitChaincodeDefinition -> Successfully endorsed commit for chaincode name 'sbe' on channel 'mychannel' with definition {sequence: 1, endorsement info: (version: '1.0', plugin: 'escc', init required: false), validation info: (plugin: 'vscc', policy: '12202f4368616e6e656c2f4170706c69636174696f6e2f456e646f7273656d656e74'), collections: (<nil>)}
+2023-07-15 13:56:01.509 UTC 005c INFO [endorser] callChaincode -> finished chaincode: _lifecycle duration: 7ms channel=mychannel txID=cf848e01
+2023-07-15 13:56:01.510 UTC 005d INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.22.0.1:43944 grpc.code=OK grpc.call_duration=12.397875ms
+2023-07-15 13:56:03.549 UTC 005e INFO [gossip.privdata] StoreBlock -> Received block [5] from buffer channel=mychannel
+2023-07-15 13:56:03.565 UTC 005f INFO [committer.txvalidator] Validate -> [mychannel] Validated block [5] in 15ms
+2023-07-15 13:56:03.568 UTC 0060 INFO [lifecycle] update -> Updating cached definition for chaincode 'sbe' on channel 'mychannel'
+2023-07-15 13:56:03.572 UTC 0061 INFO [lifecycle] update -> Chaincode with package ID 'sbe_1.0:459765c5850b4d95dd3d3db1b34bad94529471623ef0af143e44ae397332fbe9' now available on channel mychannel for chaincode definition sbe:1.0
+2023-07-15 13:56:03.601 UTC 0062 INFO [cceventmgmt] HandleStateUpdates -> Channel [mychannel]: Handling deploy or update of chaincode [sbe]
+2023-07-15 13:56:03.612 UTC 0063 INFO [kvledger] commit -> [mychannel] Committed block [5] with 1 transaction(s) in 45ms (state_validation=35ms block_and_pvtdata_commit=5ms state_commit=2ms) commitHash=[31f82212d6e8f8058a7da2eeeea626424bbda2ed4e269e9003ded16edd16b28b]
+2023-07-15 13:56:03.629 UTC 0064 INFO [comm.grpc.server] 1 -> streaming call completed grpc.service=protos.Deliver grpc.method=DeliverFiltered grpc.request_deadline=2023-07-15T13:56:31.512Z grpc.peer_address=172.22.0.1:43956 error="context finished before block retrieved: context canceled" grpc.code=Unknown grpc.call_duration=2.116514376s
+2023-07-15 13:56:09.867 UTC 0065 INFO [lifecycle] QueryChaincodeDefinition -> Successfully queried chaincode name 'sbe' with definition {sequence: 1, endorsement info: (version: '1.0', plugin: 'escc', init required: false), validation info: (plugin: 'vscc', policy: '12202f4368616e6e656c2f4170706c69636174696f6e2f456e646f7273656d656e74'), collections: ()},
+2023-07-15 13:56:09.870 UTC 0066 INFO [endorser] callChaincode -> finished chaincode: _lifecycle duration: 7ms channel=mychannel txID=f964d3b8
+2023-07-15 13:56:09.871 UTC 0067 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.22.0.1:54062 grpc.code=OK grpc.call_duration=12.231125ms
+2023-07-15 13:56:51.023 UTC 0068 INFO [endorser] callChaincode -> finished chaincode: sbe duration: 267ms channel=mychannel txID=2fcdebf8
+2023-07-15 13:56:51.026 UTC 0069 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.22.0.1:52198 grpc.code=OK grpc.call_duration=290.466792ms
+2023-07-15 13:56:53.090 UTC 006a INFO [gossip.privdata] StoreBlock -> Received block [6] from buffer channel=mychannel
+2023-07-15 13:56:53.108 UTC 006b INFO [committer.txvalidator] Validate -> [mychannel] Validated block [6] in 17ms
+2023-07-15 13:56:53.124 UTC 006c INFO [kvledger] commit -> [mychannel] Committed block [6] with 1 transaction(s) in 14ms (state_validation=1ms block_and_pvtdata_commit=7ms state_commit=4ms) commitHash=[f4cfd1ee4bb268767db394889b884ab4a6a28d4b7dd10d2529153cd288710563]
+2023-07-15 13:56:53.136 UTC 006d INFO [comm.grpc.server] 1 -> streaming call completed grpc.service=protos.Deliver grpc.method=DeliverFiltered grpc.request_deadline=2023-07-15T13:57:21.03Z grpc.peer_address=172.22.0.1:52212 error="context finished before block retrieved: context canceled" grpc.code=Unknown grpc.call_duration=2.105545293s
+2023-07-15 13:57:13.280 UTC 006e INFO [endorser] callChaincode -> finished chaincode: sbe duration: 120ms channel=mychannel txID=5196e652
+2023-07-15 13:57:13.282 UTC 006f INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.22.0.1:56304 grpc.code=OK grpc.call_duration=129.335208ms
+2023-07-15 13:57:15.334 UTC 0070 INFO [gossip.privdata] StoreBlock -> Received block [7] from buffer channel=mychannel
+2023-07-15 13:57:15.348 UTC 0071 WARN [vscc] Validate -> Endorsment policy failure error="validation of key asset1 (coll'':ns'sbe') in tx 7:0 failed: signature set did not satisfy policy" chaincode=sbe endorsementPolicy="channel_config_policy_reference:\"/Channel/Application/Endorsement\" " endorsingIdentities="(mspid=Org2MSP subject=CN=peer0.org2.example.com,OU=peer,L=San Francisco,ST=California,C=US issuer=CN=ca.org2.example.com,O=org2.example.com,L=San Francisco,ST=California,C=US serialnumber=229899866590238480119700497384954176623)"
+2023-07-15 13:57:15.350 UTC 0072 ERRO [vscc] Validate -> VSCC error: stateBasedValidator.Validate failed, err validation of key asset1 (coll'':ns'sbe') in tx 7:0 failed: signature set did not satisfy policy
+2023-07-15 13:57:15.351 UTC 0073 ERRO [committer.txvalidator] validateTx -> Dispatch for transaction txId = 5196e652150ca408905f6dcd63b24502fc517ca1bff50c77a843c43106f4d785 returned error: validation of key asset1 (coll'':ns'sbe') in tx 7:0 failed: signature set did not satisfy policy
+2023-07-15 13:57:15.352 UTC 0074 INFO [committer.txvalidator] Validate -> [mychannel] Validated block [7] in 16ms
+2023-07-15 13:57:15.353 UTC 0075 WARN [validation] preprocessProtoBlock -> Channel [mychannel]: Block [7] Transaction index [0] TxId [5196e652150ca408905f6dcd63b24502fc517ca1bff50c77a843c43106f4d785] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+2023-07-15 13:57:15.363 UTC 0076 INFO [kvledger] commit -> [mychannel] Committed block [7] with 1 transaction(s) in 9ms (state_validation=0ms block_and_pvtdata_commit=6ms state_commit=1ms) commitHash=[a006c7a0dbcffbd388a8307fdb93140e3a2568582d5a9d8341d5e2c68a9a0e45]
+2023-07-15 13:57:15.377 UTC 0077 INFO [comm.grpc.server] 1 -> streaming call completed grpc.service=protos.Deliver grpc.method=DeliverFiltered grpc.request_deadline=2023-07-15T13:57:43.291Z grpc.peer_address=172.22.0.1:56306 error="context finished before block retrieved: context canceled" grpc.code=Unknown grpc.call_duration=2.085728751s
+2023-07-15 13:57:31.650 UTC 0078 INFO [gossip.privdata] StoreBlock -> Received block [8] from buffer channel=mychannel
+2023-07-15 13:57:31.661 UTC 0079 INFO [committer.txvalidator] Validate -> [mychannel] Validated block [8] in 10ms
+2023-07-15 13:57:31.673 UTC 007a INFO [kvledger] commit -> [mychannel] Committed block [8] with 1 transaction(s) in 10ms (state_validation=0ms block_and_pvtdata_commit=6ms state_commit=1ms) commitHash=[5d41376b2424e43511cd02ca00d78a54792598b0d86da6f3ca65a31a1a820dd5]
+2023-07-15 13:57:50.017 UTC 007b INFO [gossip.privdata] StoreBlock -> Received block [9] from buffer channel=mychannel
+2023-07-15 13:57:50.030 UTC 007c INFO [committer.txvalidator] Validate -> [mychannel] Validated block [9] in 12ms
+2023-07-15 13:57:50.041 UTC 007d INFO [kvledger] commit -> [mychannel] Committed block [9] with 1 transaction(s) in 9ms (state_validation=0ms block_and_pvtdata_commit=5ms state_commit=1ms) commitHash=[6080de4b3ef771702392335a0408b7f639317bf415552165e1d5c0e0a2ebae8b]
+2023-07-15 13:58:20.733 UTC 007e INFO [gossip.privdata] StoreBlock -> Received block [10] from buffer channel=mychannel
+2023-07-15 13:58:20.745 UTC 007f WARN [vscc] Validate -> Endorsment policy failure error="validation of key asset1 (coll'':ns'sbe') in tx 10:0 failed: signature set did not satisfy policy" chaincode=sbe endorsementPolicy="channel_config_policy_reference:\"/Channel/Application/Endorsement\" " endorsingIdentities="(mspid=Org1MSP subject=CN=peer0.org1.example.com,OU=peer,L=San Francisco,ST=California,C=US issuer=CN=ca.org1.example.com,O=org1.example.com,L=San Francisco,ST=California,C=US serialnumber=326611740521552478588223526863845475218)"
+2023-07-15 13:58:20.746 UTC 0080 ERRO [vscc] Validate -> VSCC error: stateBasedValidator.Validate failed, err validation of key asset1 (coll'':ns'sbe') in tx 10:0 failed: signature set did not satisfy policy
+2023-07-15 13:58:20.747 UTC 0081 ERRO [committer.txvalidator] validateTx -> Dispatch for transaction txId = 3cea6e70944afcdd6e84bd41cb3ebffd5d5490924dd9a27408dd8cf4c63d95b6 returned error: validation of key asset1 (coll'':ns'sbe') in tx 10:0 failed: signature set did not satisfy policy
+2023-07-15 13:58:20.747 UTC 0082 INFO [committer.txvalidator] Validate -> [mychannel] Validated block [10] in 13ms
+2023-07-15 13:58:20.749 UTC 0083 WARN [validation] preprocessProtoBlock -> Channel [mychannel]: Block [10] Transaction index [0] TxId [3cea6e70944afcdd6e84bd41cb3ebffd5d5490924dd9a27408dd8cf4c63d95b6] marked as invalid by committer. Reason code [ENDORSEMENT_POLICY_FAILURE]
+2023-07-15 13:58:20.758 UTC 0084 INFO [kvledger] commit -> [mychannel] Committed block [10] with 1 transaction(s) in 9ms (state_validation=0ms block_and_pvtdata_commit=6ms state_commit=2ms) commitHash=[ed22156f8719b02a4d58c0bbdd665bd25e259a4098288e010ec2d6ee1df8d04d]
+2023-07-15 13:58:26.753 UTC 0085 INFO [endorser] callChaincode -> finished chaincode: sbe duration: 105ms channel=mychannel txID=06ade565
+2023-07-15 13:58:26.754 UTC 0086 INFO [comm.grpc.server] 1 -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.22.0.1:54536 grpc.code=OK grpc.call_duration=114.42875ms
+2023-07-15 13:58:28.796 UTC 0087 INFO [gossip.privdata] StoreBlock -> Received block [11] from buffer channel=mychannel
+2023-07-15 13:58:28.806 UTC 0088 INFO [committer.txvalidator] Validate -> [mychannel] Validated block [11] in 9ms
+2023-07-15 13:58:28.818 UTC 0089 INFO [kvledger] commit -> [mychannel] Committed block [11] with 1 transaction(s) in 9ms (state_validation=0ms block_and_pvtdata_commit=6ms state_commit=1ms) commitHash=[35e5f339e3af0fa3d1460c5bfe91b47ba1ef966ca387eef7ecfe99284b00d977]
+2023-07-15 13:58:28.827 UTC 008a INFO [comm.grpc.server] 1 -> streaming call completed grpc.service=protos.Deliver grpc.method=DeliverFiltered grpc.request_deadline=2023-07-15T13:58:56.76Z grpc.peer_address=172.22.0.1:54542 error="context finished before block retrieved: context canceled" grpc.code=Unknown grpc.call_duration=2.066811585s
