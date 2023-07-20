@@ -1,0 +1,6 @@
+2023/07/20 18:30:52 ReadAsset: collection assetCollection, ID asset119
+2023/07/20 18:30:52 ReadAsset: collection assetCollection, ID asset119
+2023/07/20 18:30:52 AgreeToTransfer Put: collection Org2MSPPrivateCollection, ID asset119
+2023/07/20 18:30:52 AgreeToTransfer Put: collection assetCollection, ID asset119, Key transferAgreementasset119
+2023/07/20 18:30:56 Deleting Asset: asset120
+2023/07/20 18:30:59 ReadAssetPrivateDetails: collection Org2MSPPrivateCollection, ID asset119

@@ -1,0 +1,182 @@
+2023-07-20 18:21:49.998 UTC [localconfig] completeInitialization -> INFO 001 Kafka.Version unset, setting to 0.10.2.0
+2023-07-20 18:21:50.009 UTC [orderer.common.server] prettyPrintStruct -> INFO 002 Orderer config values:
+	General.ListenAddress = "0.0.0.0"
+	General.ListenPort = 7050
+	General.TLS.Enabled = true
+	General.TLS.PrivateKey = "/var/hyperledger/orderer/tls/server.key"
+	General.TLS.Certificate = "/var/hyperledger/orderer/tls/server.crt"
+	General.TLS.RootCAs = [/var/hyperledger/orderer/tls/ca.crt]
+	General.TLS.ClientAuthRequired = false
+	General.TLS.ClientRootCAs = []
+	General.TLS.TLSHandshakeTimeShift = 0s
+	General.Cluster.ListenAddress = ""
+	General.Cluster.ListenPort = 0
+	General.Cluster.ServerCertificate = ""
+	General.Cluster.ServerPrivateKey = ""
+	General.Cluster.ClientCertificate = "/var/hyperledger/orderer/tls/server.crt"
+	General.Cluster.ClientPrivateKey = "/var/hyperledger/orderer/tls/server.key"
+	General.Cluster.RootCAs = [/var/hyperledger/orderer/tls/ca.crt]
+	General.Cluster.DialTimeout = 5s
+	General.Cluster.RPCTimeout = 7s
+	General.Cluster.ReplicationBufferSize = 20971520
+	General.Cluster.ReplicationPullTimeout = 5s
+	General.Cluster.ReplicationRetryTimeout = 5s
+	General.Cluster.ReplicationBackgroundRefreshInterval = 5m0s
+	General.Cluster.ReplicationMaxRetries = 12
+	General.Cluster.SendBufferSize = 10
+	General.Cluster.CertExpirationWarningThreshold = 168h0m0s
+	General.Cluster.TLSHandshakeTimeShift = 0s
+	General.Keepalive.ServerMinInterval = 1m0s
+	General.Keepalive.ServerInterval = 2h0m0s
+	General.Keepalive.ServerTimeout = 20s
+	General.ConnectionTimeout = 0s
+	General.GenesisMethod = ""
+	General.GenesisFile = ""
+	General.BootstrapMethod = "none"
+	General.BootstrapFile = "/etc/hyperledger/fabric/genesisblock"
+	General.Profile.Enabled = false
+	General.Profile.Address = "0.0.0.0:6060"
+	General.LocalMSPDir = "/var/hyperledger/orderer/msp"
+	General.LocalMSPID = "OrdererMSP"
+	General.BCCSP.Default = "SW"
+	General.BCCSP.SW.Security = 256
+	General.BCCSP.SW.Hash = "SHA2"
+	General.BCCSP.SW.FileKeystore.KeyStorePath = ""
+	General.Authentication.TimeWindow = 15m0s
+	General.Authentication.NoExpirationChecks = false
+	FileLedger.Location = "/var/hyperledger/production/orderer"
+	FileLedger.Prefix = ""
+	Kafka.Retry.ShortInterval = 5s
+	Kafka.Retry.ShortTotal = 10m0s
+	Kafka.Retry.LongInterval = 5m0s
+	Kafka.Retry.LongTotal = 12h0m0s
+	Kafka.Retry.NetworkTimeouts.DialTimeout = 10s
+	Kafka.Retry.NetworkTimeouts.ReadTimeout = 10s
+	Kafka.Retry.NetworkTimeouts.WriteTimeout = 10s
+	Kafka.Retry.Metadata.RetryMax = 3
+	Kafka.Retry.Metadata.RetryBackoff = 250ms
+	Kafka.Retry.Producer.RetryMax = 3
+	Kafka.Retry.Producer.RetryBackoff = 100ms
+	Kafka.Retry.Consumer.RetryBackoff = 2s
+	Kafka.Verbose = true
+	Kafka.Version = 0.10.2.0
+	Kafka.TLS.Enabled = false
+	Kafka.TLS.PrivateKey = ""
+	Kafka.TLS.Certificate = ""
+	Kafka.TLS.RootCAs = []
+	Kafka.TLS.ClientAuthRequired = false
+	Kafka.TLS.ClientRootCAs = []
+	Kafka.TLS.TLSHandshakeTimeShift = 0s
+	Kafka.SASLPlain.Enabled = false
+	Kafka.SASLPlain.User = ""
+	Kafka.SASLPlain.Password = ""
+	Kafka.Topic.ReplicationFactor = 1
+	Debug.BroadcastTraceDir = ""
+	Debug.DeliverTraceDir = ""
+	Consensus = map[SnapDir:/var/hyperledger/production/orderer/etcdraft/snapshot WALDir:/var/hyperledger/production/orderer/etcdraft/wal]
+	Operations.ListenAddress = "127.0.0.1:8443"
+	Operations.TLS.Enabled = false
+	Operations.TLS.PrivateKey = ""
+	Operations.TLS.Certificate = ""
+	Operations.TLS.RootCAs = []
+	Operations.TLS.ClientAuthRequired = false
+	Operations.TLS.ClientRootCAs = []
+	Operations.TLS.TLSHandshakeTimeShift = 0s
+	Metrics.Provider = "disabled"
+	Metrics.Statsd.Network = "udp"
+	Metrics.Statsd.Address = "127.0.0.1:8125"
+	Metrics.Statsd.WriteInterval = 30s
+	Metrics.Statsd.Prefix = ""
+	ChannelParticipation.Enabled = true
+	ChannelParticipation.MaxRequestBodySize = 1048576
+	Admin.ListenAddress = "0.0.0.0:7053"
+	Admin.TLS.Enabled = true
+	Admin.TLS.PrivateKey = "/var/hyperledger/orderer/tls/server.key"
+	Admin.TLS.Certificate = "/var/hyperledger/orderer/tls/server.crt"
+	Admin.TLS.RootCAs = [/var/hyperledger/orderer/tls/ca.crt]
+	Admin.TLS.ClientAuthRequired = true
+	Admin.TLS.ClientRootCAs = [/var/hyperledger/orderer/tls/ca.crt]
+	Admin.TLS.TLSHandshakeTimeShift = 0s
+2023-07-20 18:21:50.250 UTC [orderer.common.server] initializeServerConfig -> INFO 003 Starting orderer with TLS enabled
+2023-07-20 18:21:50.295 UTC [blkstorage] NewProvider -> INFO 004 Creating new file ledger directory at /var/hyperledger/production/orderer/chains
+2023-07-20 18:21:50.298 UTC [orderer.commmon.multichannel] InitJoinBlockFileRepo -> INFO 005 Channel Participation API enabled, registrar initializing with file repo /var/hyperledger/production/orderer/pendingops
+2023-07-20 18:21:50.311 UTC [orderer.common.server] Main -> INFO 006 Starting without a system channel
+2023-07-20 18:21:50.312 UTC [orderer.common.server] Main -> INFO 007 Setting up cluster
+2023-07-20 18:21:50.312 UTC [orderer.common.server] reuseListener -> INFO 008 Cluster listener is not configured, defaulting to use the general listener on port 7050
+2023-07-20 18:21:50.317 UTC [orderer.common.server] reuseListener -> INFO 009 Cluster listener is not configured, defaulting to use the general listener on port 7050
+2023-07-20 18:21:50.320 UTC [certmonitor] trackCertExpiration -> INFO 00a The enrollment certificate will expire on 2024-07-19 18:22:00 +0000 UTC
+2023-07-20 18:21:50.321 UTC [certmonitor] trackCertExpiration -> INFO 00b The server TLS certificate will expire on 2024-07-19 18:22:00 +0000 UTC
+2023-07-20 18:21:50.322 UTC [certmonitor] trackCertExpiration -> INFO 00c The client TLS certificate will expire on 2024-07-19 18:22:00 +0000 UTC
+2023-07-20 18:21:50.323 UTC [orderer.commmon.multichannel] InitJoinBlockFileRepo -> INFO 00d Channel Participation API enabled, registrar initializing with file repo /var/hyperledger/production/orderer/pendingops
+2023-07-20 18:21:50.329 UTC [orderer.commmon.multichannel] startChannels -> INFO 00e Registrar initializing without a system channel, number of application channels: 0, with 0 consensus.Chain(s) and 0 follower.Chain(s)
+2023-07-20 18:21:50.340 UTC [orderer.common.server] Main -> INFO 00f Starting orderer:
+ Version: 2.3.0
+ Commit SHA: ec81f3e
+ Go version: go1.14.12
+ OS/Arch: linux/amd64
+2023-07-20 18:21:50.344 UTC [orderer.common.server] Main -> INFO 010 Beginning to serve requests
+2023-07-20 18:21:53.233 UTC [blkstorage] newBlockfileMgr -> INFO 011 Getting block information from block storage
+2023-07-20 18:21:53.277 UTC [orderer.consensus.etcdraft] HandleChain -> INFO 012 EvictionSuspicion not set, defaulting to 10m0s
+2023-07-20 18:21:53.278 UTC [orderer.consensus.etcdraft] HandleChain -> INFO 013 Without system channel: after eviction Registrar.SwitchToFollower will be called
+2023-07-20 18:21:53.279 UTC [orderer.consensus.etcdraft] createOrReadWAL -> INFO 014 No WAL data found, creating new WAL at path '/var/hyperledger/production/orderer/etcdraft/wal/mychannel' channel=mychannel node=1
+2023-07-20 18:21:53.292 UTC [orderer.commmon.multichannel] createAsMember -> INFO 015 Joining channel: {mychannel  consenter active 1}
+2023-07-20 18:21:53.293 UTC [orderer.consensus.etcdraft] Start -> INFO 016 Starting Raft node channel=mychannel node=1
+2023-07-20 18:21:53.294 UTC [orderer.common.cluster] Configure -> INFO 017 Entering, channel: mychannel, nodes: []
+2023-07-20 18:21:53.294 UTC [orderer.common.cluster] Configure -> INFO 018 Exiting
+2023-07-20 18:21:53.295 UTC [orderer.consensus.etcdraft] start -> INFO 019 Starting raft node as part of a new channel channel=mychannel node=1
+2023-07-20 18:21:53.295 UTC [orderer.consensus.etcdraft] becomeFollower -> INFO 01a 1 became follower at term 0 channel=mychannel node=1
+2023-07-20 18:21:53.296 UTC [orderer.consensus.etcdraft] newRaft -> INFO 01b newRaft 1 [peers: [], term: 0, commit: 0, applied: 0, lastindex: 0, lastterm: 0] channel=mychannel node=1
+2023-07-20 18:21:53.296 UTC [orderer.consensus.etcdraft] becomeFollower -> INFO 01c 1 became follower at term 1 channel=mychannel node=1
+2023-07-20 18:21:53.298 UTC [orderer.consensus.etcdraft] run -> INFO 01d This node is picked to start campaign channel=mychannel node=1
+2023-07-20 18:21:53.308 UTC [orderer.consensus.etcdraft] apply -> INFO 01e Applied config change to add node 1, current nodes in channel: [1] channel=mychannel node=1
+2023-07-20 18:21:54.301 UTC [orderer.consensus.etcdraft] Step -> INFO 01f 1 is starting a new election at term 1 channel=mychannel node=1
+2023-07-20 18:21:54.302 UTC [orderer.consensus.etcdraft] becomePreCandidate -> INFO 020 1 became pre-candidate at term 1 channel=mychannel node=1
+2023-07-20 18:21:54.303 UTC [orderer.consensus.etcdraft] poll -> INFO 021 1 received MsgPreVoteResp from 1 at term 1 channel=mychannel node=1
+2023-07-20 18:21:54.303 UTC [orderer.consensus.etcdraft] becomeCandidate -> INFO 022 1 became candidate at term 2 channel=mychannel node=1
+2023-07-20 18:21:54.304 UTC [orderer.consensus.etcdraft] poll -> INFO 023 1 received MsgVoteResp from 1 at term 2 channel=mychannel node=1
+2023-07-20 18:21:54.305 UTC [orderer.consensus.etcdraft] becomeLeader -> INFO 024 1 became leader at term 2 channel=mychannel node=1
+2023-07-20 18:21:54.305 UTC [orderer.consensus.etcdraft] run -> INFO 025 raft.node: 1 elected leader 1 at term 2 channel=mychannel node=1
+2023-07-20 18:21:54.308 UTC [orderer.consensus.etcdraft] run -> INFO 026 Leader 1 is present, quit campaign channel=mychannel node=1
+2023-07-20 18:21:54.308 UTC [orderer.consensus.etcdraft] run -> INFO 027 Raft leader changed: 0 -> 1 channel=mychannel node=1
+2023-07-20 18:21:54.310 UTC [orderer.consensus.etcdraft] run -> INFO 028 Start accepting requests as Raft leader at block [0] channel=mychannel node=1
+2023-07-20 18:22:00.934 UTC [common.deliver] Handle -> WARN 029 Error reading from 192.168.0.8:36900: rpc error: code = Canceled desc = context canceled
+2023-07-20 18:22:00.935 UTC [comm.grpc.server] 1 -> INFO 02a streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Deliver grpc.peer_address=192.168.0.8:36900 error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=66.004ms
+2023-07-20 18:22:03.268 UTC [orderer.consensus.etcdraft] propose -> INFO 02b Created block [1], there are 0 blocks in flight channel=mychannel node=1
+2023-07-20 18:22:03.268 UTC [orderer.consensus.etcdraft] run -> INFO 02c Received config transaction, pause accepting transaction till it is committed channel=mychannel node=1
+2023-07-20 18:22:03.273 UTC [orderer.consensus.etcdraft] writeBlock -> INFO 02d Writing block [1] (Raft index: 3) to ledger channel=mychannel node=1
+2023-07-20 18:22:03.287 UTC [orderer.common.broadcast] Handle -> WARN 02e Error reading from 192.168.0.8:44984: rpc error: code = Canceled desc = context canceled
+2023-07-20 18:22:03.287 UTC [comm.grpc.server] 1 -> INFO 02f streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.peer_address=192.168.0.8:44984 error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=87.613ms
+2023-07-20 18:22:04.290 UTC [common.deliver] Handle -> WARN 030 Error reading from 192.168.0.8:44986: rpc error: code = Canceled desc = context canceled
+2023-07-20 18:22:04.290 UTC [comm.grpc.server] 1 -> INFO 031 streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Deliver grpc.peer_address=192.168.0.8:44986 error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=58.909ms
+2023-07-20 18:22:06.617 UTC [orderer.consensus.etcdraft] propose -> INFO 032 Created block [2], there are 0 blocks in flight channel=mychannel node=1
+2023-07-20 18:22:06.617 UTC [orderer.consensus.etcdraft] run -> INFO 033 Received config transaction, pause accepting transaction till it is committed channel=mychannel node=1
+2023-07-20 18:22:06.620 UTC [orderer.consensus.etcdraft] writeBlock -> INFO 034 Writing block [2] (Raft index: 4) to ledger channel=mychannel node=1
+2023-07-20 18:22:06.633 UTC [orderer.common.broadcast] Handle -> WARN 035 Error reading from 192.168.0.8:44998: rpc error: code = Canceled desc = context canceled
+2023-07-20 18:22:06.633 UTC [comm.grpc.server] 1 -> INFO 036 streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.peer_address=192.168.0.8:44998 error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=71.319ms
+2023-07-20 18:24:34.232 UTC [orderer.consensus.etcdraft] propose -> INFO 037 Created block [3], there are 0 blocks in flight channel=mychannel node=1
+2023-07-20 18:24:34.246 UTC [orderer.consensus.etcdraft] writeBlock -> INFO 038 Writing block [3] (Raft index: 5) to ledger channel=mychannel node=1
+2023-07-20 18:24:34.339 UTC [orderer.common.broadcast] Handle -> WARN 039 Error reading from 192.168.0.1:50746: rpc error: code = Canceled desc = context canceled
+2023-07-20 18:24:34.340 UTC [comm.grpc.server] 1 -> INFO 03a streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.peer_address=192.168.0.1:50746 error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=2.199052s
+2023-07-20 18:24:42.808 UTC [orderer.consensus.etcdraft] propose -> INFO 03b Created block [4], there are 0 blocks in flight channel=mychannel node=1
+2023-07-20 18:24:42.814 UTC [orderer.consensus.etcdraft] writeBlock -> INFO 03c Writing block [4] (Raft index: 6) to ledger channel=mychannel node=1
+2023-07-20 18:24:42.881 UTC [orderer.common.broadcast] Handle -> WARN 03d Error reading from 192.168.0.1:50752: rpc error: code = Canceled desc = context canceled
+2023-07-20 18:24:42.881 UTC [comm.grpc.server] 1 -> INFO 03e streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.peer_address=192.168.0.1:50752 error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=2.119252s
+2023-07-20 18:24:51.357 UTC [orderer.consensus.etcdraft] propose -> INFO 03f Created block [5], there are 0 blocks in flight channel=mychannel node=1
+2023-07-20 18:24:51.361 UTC [orderer.consensus.etcdraft] writeBlock -> INFO 040 Writing block [5] (Raft index: 7) to ledger channel=mychannel node=1
+2023-07-20 18:24:52.478 UTC [orderer.common.broadcast] Handle -> WARN 041 Error reading from 192.168.0.1:59280: rpc error: code = Canceled desc = context canceled
+2023-07-20 18:24:52.478 UTC [comm.grpc.server] 1 -> INFO 042 streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.peer_address=192.168.0.1:59280 error="rpc error: code = Canceled desc = context canceled" grpc.code=Canceled grpc.call_duration=3.178228s
+2023-07-20 18:30:48.101 UTC [comm.grpc.server] 1 -> INFO 043 streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.peer_address=192.168.0.1:43576 grpc.peer_subject="CN=fabric-common" grpc.code=OK grpc.call_duration=17.907ms
+2023-07-20 18:30:50.105 UTC [orderer.consensus.etcdraft] propose -> INFO 044 Created block [6], there are 0 blocks in flight channel=mychannel node=1
+2023-07-20 18:30:50.114 UTC [orderer.consensus.etcdraft] writeBlock -> INFO 045 Writing block [6] (Raft index: 8) to ledger channel=mychannel node=1
+2023-07-20 18:30:50.238 UTC [comm.grpc.server] 1 -> INFO 046 streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.peer_address=192.168.0.1:43576 grpc.peer_subject="CN=fabric-common" grpc.code=OK grpc.call_duration=3.797ms
+2023-07-20 18:30:52.243 UTC [orderer.consensus.etcdraft] propose -> INFO 047 Created block [7], there are 0 blocks in flight channel=mychannel node=1
+2023-07-20 18:30:52.259 UTC [orderer.consensus.etcdraft] writeBlock -> INFO 048 Writing block [7] (Raft index: 9) to ledger channel=mychannel node=1
+2023-07-20 18:30:52.576 UTC [comm.grpc.server] 1 -> INFO 049 streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.peer_address=192.168.0.1:43590 grpc.peer_subject="CN=fabric-common" grpc.code=OK grpc.call_duration=15.758ms
+2023-07-20 18:30:54.578 UTC [orderer.consensus.etcdraft] propose -> INFO 04a Created block [8], there are 0 blocks in flight channel=mychannel node=1
+2023-07-20 18:30:54.589 UTC [orderer.consensus.etcdraft] writeBlock -> INFO 04b Writing block [8] (Raft index: 10) to ledger channel=mychannel node=1
+2023-07-20 18:30:54.738 UTC [comm.grpc.server] 1 -> INFO 04c streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.peer_address=192.168.0.1:43576 grpc.peer_subject="CN=fabric-common" grpc.code=OK grpc.call_duration=4.018ms
+2023-07-20 18:30:56.743 UTC [orderer.consensus.etcdraft] propose -> INFO 04d Created block [9], there are 0 blocks in flight channel=mychannel node=1
+2023-07-20 18:30:56.754 UTC [orderer.consensus.etcdraft] writeBlock -> INFO 04e Writing block [9] (Raft index: 11) to ledger channel=mychannel node=1
+2023-07-20 18:30:56.968 UTC [comm.grpc.server] 1 -> INFO 04f streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.peer_address=192.168.0.1:43576 grpc.peer_subject="CN=fabric-common" grpc.code=OK grpc.call_duration=3.911ms
+2023-07-20 18:30:58.971 UTC [orderer.consensus.etcdraft] propose -> INFO 050 Created block [10], there are 0 blocks in flight channel=mychannel node=1
+2023-07-20 18:30:58.977 UTC [orderer.consensus.etcdraft] writeBlock -> INFO 051 Writing block [10] (Raft index: 12) to ledger channel=mychannel node=1

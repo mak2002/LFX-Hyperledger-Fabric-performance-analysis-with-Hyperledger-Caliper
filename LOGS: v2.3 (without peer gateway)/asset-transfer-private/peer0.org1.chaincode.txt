@@ -1,0 +1,19 @@
+2023/07/20 18:30:48 CreateAsset Put: collection assetCollection, ID asset119, owner x509::CN=appUser1,OU=org1+OU=client+OU=department1::CN=ca.org1.example.com,O=org1.example.com,L=Durham,ST=North Carolina,C=US
+2023/07/20 18:30:48 Put: collection Org1MSPPrivateCollection, ID asset119
+2023/07/20 18:30:50 CreateAsset Put: collection assetCollection, ID asset120, owner x509::CN=appUser1,OU=org1+OU=client+OU=department1::CN=ca.org1.example.com,O=org1.example.com,L=Durham,ST=North Carolina,C=US
+2023/07/20 18:30:50 Put: collection Org1MSPPrivateCollection, ID asset120
+2023/07/20 18:30:52 ReadAssetPrivateDetails: collection Org1MSPPrivateCollection, ID asset119
+2023/07/20 18:30:52 TransferAsset: verify asset exists ID asset119
+2023/07/20 18:30:52 ReadAsset: collection assetCollection, ID asset119
+2023/07/20 18:30:54 ReadTransferAgreement: collection assetCollection, ID asset119
+2023/07/20 18:30:54 TransferAsset: verify asset exists ID asset119
+2023/07/20 18:30:54 ReadAsset: collection assetCollection, ID asset119
+2023/07/20 18:30:54 ReadTransferAgreement: collection assetCollection, ID asset119
+2023/07/20 18:30:54 TransferAsset Put: collection assetCollection, ID asset119
+2023/07/20 18:30:56 ReadAsset: collection assetCollection, ID asset119
+2023/07/20 18:30:56 ReadAssetPrivateDetails: collection Org1MSPPrivateCollection, ID asset119
+2023/07/20 18:30:56 AssetPrivateDetails for asset119 does not exist in collection Org1MSPPrivateCollection
+2023/07/20 18:30:56 ReadAsset: collection assetCollection, ID asset120
+2023/07/20 18:30:56 Deleting Asset: asset120
+2023/07/20 18:30:59 ReadAsset: collection assetCollection, ID asset120
+2023/07/20 18:30:59 asset120 does not exist in collection assetCollection
