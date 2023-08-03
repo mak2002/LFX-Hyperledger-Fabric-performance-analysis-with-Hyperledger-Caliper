@@ -1,0 +1,15 @@
+2023/08/03 05:20:21 CreateAsset Put: collection assetCollection, ID asset1691040021683, owner x509::CN=user1,OU=client,O=Hyperledger,ST=North Carolina,C=US::CN=ca.org1.example.com,O=org1.example.com,L=Durham,ST=North Carolina,C=US
+2023/08/03 05:20:21 Put: collection Org1MSPPrivateCollection, ID asset1691040021683
+2023/08/03 05:20:24 CreateAsset Put: collection assetCollection, ID asset1691040021684, owner x509::CN=user1,OU=client,O=Hyperledger,ST=North Carolina,C=US::CN=ca.org1.example.com,O=org1.example.com,L=Durham,ST=North Carolina,C=US
+2023/08/03 05:20:24 Put: collection Org1MSPPrivateCollection, ID asset1691040021684
+2023/08/03 05:20:26 TransferAsset: verify asset exists ID asset1691040021683
+2023/08/03 05:20:26 ReadAsset: collection assetCollection, ID asset1691040021683
+2023/08/03 05:20:28 ReadTransferAgreement: collection assetCollection, ID asset1691040021683
+2023/08/03 05:20:28 TransferAsset: verify asset exists ID asset1691040021683
+2023/08/03 05:20:28 ReadAsset: collection assetCollection, ID asset1691040021683
+2023/08/03 05:20:28 ReadTransferAgreement: collection assetCollection, ID asset1691040021683
+2023/08/03 05:20:28 TransferAsset Put: collection assetCollection, ID asset1691040021683
+2023/08/03 05:20:30 ReadAsset: collection assetCollection, ID asset1691040021683
+2023/08/03 05:20:30 ReadAssetPrivateDetails: collection Org1MSPPrivateCollection, ID asset1691040021683
+2023/08/03 05:20:30 AssetPrivateDetails for asset1691040021683 does not exist in collection Org1MSPPrivateCollection
+2023/08/03 05:20:30 Deleting Asset: asset1691040021684
