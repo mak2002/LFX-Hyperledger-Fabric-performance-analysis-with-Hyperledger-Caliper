@@ -1,0 +1,23 @@
++ CHAINCODE_DIR=/usr/local/src
++ cd /usr/local/src
++ npm start -- --peer.address peer0.org2.example.com:9052
+
+> asset-transfer-sbe@0.0.1 start
+> fabric-chaincode-node start "--peer.address" "peer0.org2.example.com:9052"
+
+2023-08-07T19:08:23.573Z [32minfo[39m [c-api:./lib/annotations/object.js]                 @Object args: Target -> %s "Function" 
+2023-08-07T19:08:23.594Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> CreateAsset, Commit -> true,","Target ->","AssetContract" 
+2023-08-07T19:08:23.616Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> ReadAsset, Commit -> false,","Target ->","AssetContract" 
+2023-08-07T19:08:23.631Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> UpdateAsset, Commit -> true,","Target ->","AssetContract" 
+2023-08-07T19:08:23.637Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> DeleteAsset, Commit -> true,","Target ->","AssetContract" 
+2023-08-07T19:08:23.643Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> TransferAsset, Commit -> true,","Target ->","AssetContract" 
+2023-08-07T19:08:23.646Z [32minfo[39m [c-api:./lib/annotations/info.js]                   @Info args: "Info -> [object Object],","Target ->","AssetContract" 
+2023-08-07T19:08:23.746Z [32minfo[39m [c-api:contracts-spi/bootstrap.js]                  No metadata file supplied in contract, introspection will generate all the data  
+2023-08-07T19:08:24.084Z [32minfo[39m [c-api:lib/handler.js]                              Creating new Chaincode Support Client for peer comminications  
+2023-08-07T19:08:24.111Z [32minfo[39m [c-api:lib/chaincode.js]                            Registering with peer peer0.org2.example.com:9052 as chaincode "sbe_1.0:045429345b480988791d16092db550d1772082eb8e7e4dd66bdaa1d9f6caf7ff"  
+2023-08-07T19:08:24.152Z [32minfo[39m [c-api:fabric-shim/cli]                             Bootstrap process completed  
+2023-08-07T19:08:24.371Z [32minfo[39m [c-api:lib/handler.js]                              Successfully registered with peer node. State transferred to "established"  
+2023-08-07T19:08:24.376Z [32minfo[39m [c-api:lib/handler.js]                              Successfully established communication with peer node. State transferred to "ready"  
+2023-08-07T19:08:54.581Z [32minfo[39m [c-api:lib/handler.js]                              [mychannel-773e65b7] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
+2023-08-07T19:09:07.928Z [32minfo[39m [c-api:lib/handler.js]                              [mychannel-7f9c53a8] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
+2023-08-07T19:11:12.103Z [32minfo[39m [c-api:lib/handler.js]                              [mychannel-cbda440b] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
