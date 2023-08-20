@@ -1,0 +1,33 @@
++ CHAINCODE_DIR=/usr/local/src
++ cd /usr/local/src
++ npm start -- --peer.address peer0.org2.example.com:9052
+
+> asset-transfer-basic@1.0.0 start
+> set -x && fabric-chaincode-node start "--peer.address" "peer0.org2.example.com:9052"
+
++ fabric-chaincode-node start --peer.address peer0.org2.example.com:9052
+2023-08-06T13:54:53.680Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> InitLedger, Commit -> true,","Target ->","AssetTransferContract" 
+2023-08-06T13:54:53.700Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> CreateAsset, Commit -> true,","Target ->","AssetTransferContract" 
+2023-08-06T13:54:53.720Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> ReadAsset, Commit -> false,","Target ->","AssetTransferContract" 
+2023-08-06T13:54:53.731Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> UpdateAsset, Commit -> true,","Target ->","AssetTransferContract" 
+2023-08-06T13:54:53.740Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> DeleteAsset, Commit -> true,","Target ->","AssetTransferContract" 
+2023-08-06T13:54:53.750Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Returns args: ", Property Key -> AssetExists, Return Type -> boolean,","Target ->","AssetTransferContract" 
+2023-08-06T13:54:53.752Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> AssetExists, Commit -> false,","Target ->","AssetTransferContract" 
+2023-08-06T13:54:53.758Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> TransferAsset, Commit -> true,","Target ->","AssetTransferContract" 
+2023-08-06T13:54:53.765Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Returns args: ", Property Key -> GetAllAssets, Return Type -> string,","Target ->","AssetTransferContract" 
+2023-08-06T13:54:53.771Z [32minfo[39m [c-api:./lib/annotations/transaction.js]            @Transaction args: "Property Key -> GetAllAssets, Commit -> false,","Target ->","AssetTransferContract" 
+2023-08-06T13:54:53.777Z [32minfo[39m [c-api:./lib/annotations/info.js]                   @Info args: "Info -> [object Object],","Target ->","AssetTransferContract" 
+2023-08-06T13:54:53.900Z [32minfo[39m [c-api:contracts-spi/bootstrap.js]                  No metadata file supplied in contract, introspection will generate all the data  
+2023-08-06T13:54:54.193Z [32minfo[39m [c-api:lib/chaincode.js]                            Registering with peer peer0.org2.example.com:9052 as chaincode "basic_1.0:9e8f8c41f74494c8c464128f5aac9c57c1e662b975524fbfc26dcb9b69453af7"  
+2023-08-06T13:54:54.252Z [32minfo[39m [c-api:fabric-shim/cli]                             Bootstrap process completed  
+2023-08-06T13:54:54.463Z [32minfo[39m [c-api:lib/handler.js]                              Successfully registered with peer node. State transferred to "established"  
+2023-08-06T13:54:54.468Z [32minfo[39m [c-api:lib/handler.js]                              Successfully established communication with peer node. State transferred to "ready"  
+Asset asset1 initialized
+Asset asset2 initialized
+Asset asset3 initialized
+Asset asset4 initialized
+Asset asset5 initialized
+Asset asset6 initialized
+2023-08-06T13:58:27.199Z [32minfo[39m [c-api:lib/handler.js]                              [mychannel-f97b828e] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
+2023-08-06T13:58:29.924Z [32minfo[39m [c-api:lib/handler.js]                              [mychannel-ccd9b5ca] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
+2023-08-06T13:58:32.232Z [32minfo[39m [c-api:lib/handler.js]                              [mychannel-0add2040] Calling chaincode Invoke() succeeded. Sending COMPLETED message back to peer  
