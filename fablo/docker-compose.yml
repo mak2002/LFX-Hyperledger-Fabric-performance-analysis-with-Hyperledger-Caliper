@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  elasticsearch:
+    image: elasticsearch:7.14.2
+    # image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
+    environment:
+      - LOGSPOUT=ignore
+    ports:
+      - 9200:9200
+    volumes:
+      - ./configs/elasticsearch/jvm.options:/usr/share/elasticsearch/config/jvm.options
+      - ./configs/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    networks:
+      - fablo_network_202308300640_basic
+    deploy:
+      placement:
+        constraints:
+          - "node.labels.service==elasticsearch"
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.12
+    networks:
+      - fablo_network_202308300640_basic
+
+networks:
+  fablo_network_202308300640_basic:
+    external: true

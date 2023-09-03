@@ -1,0 +1,2 @@
+xpack.monitoring.enabled: false
+xpack.monitoring.elasticsearch.hosts: [ "http://localhost:9200" ]
