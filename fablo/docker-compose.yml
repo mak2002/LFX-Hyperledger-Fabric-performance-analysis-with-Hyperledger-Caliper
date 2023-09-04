@@ -6,22 +6,40 @@ services:
     # image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
     environment:
       - LOGSPOUT=ignore
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
     ports:
       - 9200:9200
+      - 9300:9300
     volumes:
       - ./configs/elasticsearch/jvm.options:/usr/share/elasticsearch/config/jvm.options
       - ./configs/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     networks:
       - fablo_network_202308300640_basic
-    deploy:
-      placement:
-        constraints:
-          - "node.labels.service==elasticsearch"
 
   logstash:
     image: docker.elastic.co/logstash/logstash:7.17.12
+    volumes:
+      - ./configs/logstash/jvm.options:/usr/share/logstash/config/jvm.options
+      - ./configs/logstash/logstash.yml:/usr/share/logstash/config/elasticsearch.yml
+      - ./configs/logstash/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     networks:
       - fablo_network_202308300640_basic
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: kibana:7.17.12
+    ports:
+      # Dashboard
+      - 5601:5601
+    environment:
+      - LOGSPOUT=ignore
+    volumes:
+      - ./configs/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    networks:
+      - fablo_network_202308300640_basic
+    depends_on:
+      - elasticsearch
 
 networks:
   fablo_network_202308300640_basic:
