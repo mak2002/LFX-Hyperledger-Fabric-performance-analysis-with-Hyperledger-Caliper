@@ -18,6 +18,8 @@ services:
     image: logstash:5.1.2
     container_name: logstash
     command: logstash -f /config/
+    expose:
+      - 5000
     environment:
       - JAVA_OPTS=-Xms1g -Xmx1g
     volumes:
@@ -26,6 +28,12 @@ services:
       - fablo_network_202308300640_basic
     depends_on:
       - elasticsearch
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - "node.labels.service==logstash"
 
   kibana:
     image: kibana:5.1.2
