@@ -1,7 +1,6 @@
 version: "3"
 
 services:
-
   elasticsearch:
     image: elasticsearch:5.1.2
     container_name: elastic
@@ -39,6 +38,23 @@ services:
       - fablo_network_202308300640_basic
     depends_on:
       - elasticsearch
+
+  logspout:
+    image: tiagoreichert/logspout-logstash-multiline
+    environment:
+      - LOGSPOUT=ignore
+      - ROUTE_URIS=logstash+tcp://logstash:5000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - fablo_network_202308300640_basic
+    depends_on:
+      - logstash
+    deploy:
+      mode: global
+      restart_policy:
+        condition: on-failure
+        delay: 1s
 
 networks:
   fablo_network_202308300640_basic:
