@@ -4,8 +4,6 @@ services:
   elasticsearch:
     image: elasticsearch:5.1.2
     container_name: elastic
-    environment:
-      - ES_JAVA_OPTS=-Xms1g -Xmx1g
     ports:
       - 9200:9200
       - 9300:9300
@@ -17,17 +15,22 @@ services:
   logstash:
     image: logstash:5.1.2
     container_name: logstash
-    command: logstash -f /config/
+    # command: 'logstash -e "input { udp { port => 5000 } } output { elasticsearch { hosts => elasticsearch } }"'
+    environment:
+      - STDOUT=true
     expose:
       - 5000
-    environment:
-      - JAVA_OPTS=-Xms1g -Xmx1g
+    # environment:
+    #   - JAVA_OPTS=-Xms1g -Xmx1g
     volumes:
       - $PWD/configs/logstash/config:/config
+      # - $PWD/configs/logstash/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf  # Bind mount logstash.conf
+
     networks:
       - fablo_network_202308300640_basic
     depends_on:
       - elasticsearch
+      - kibana
     deploy:
       mode: replicated
       replicas: 1
@@ -42,22 +45,32 @@ services:
       - 5601:5601
     volumes:
       - $PWD/configs/kibana/kibana.yml:/etc/kibana/kibana.yml
+    # environment:
+    #   - ELASTICSEARCH_URL=http://elasticsearch:9200
     networks:
       - fablo_network_202308300640_basic
     depends_on:
       - elasticsearch
 
   logspout:
-    image: tiagoreichert/logspout-logstash-multiline
+    # image: tiagoreichert/logspout-logstash-multiline
+    image: logstash:7.17.12
+    # command: ["sh", "-c", "sleep 30"]
     environment:
       - LOGSPOUT=ignore
       - ROUTE_URIS=logstash+tcp://logstash:5000
+      - RETRY_STARTUP=yes
+      - RETRY_SEND=on
+      - RETRY_COUNT=100
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - fablo_network_202308300640_basic
     depends_on:
-      - logstash
+       - elasticsearch
+       - logstash
+       - kibana
+    restart: always
     deploy:
       mode: global
       restart_policy:
