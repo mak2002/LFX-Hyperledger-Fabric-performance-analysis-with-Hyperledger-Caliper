@@ -1,0 +1,62 @@
+version: '3.6'
+services:
+  Elasticsearch:
+    image: arm64v8/elasticsearch:7.17.0
+    container_name: elasticsearch
+    restart: always
+    volumes:
+    - elastic_data:/usr/share/elasticsearch/data/
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      discovery.type: single-node    
+    ports:
+    - '9200:9200'
+    - '9300:9300'
+    networks:
+      - fablo_network_202308300640_basic
+
+  Logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.0-arm64
+    container_name: logstash
+    restart: always
+    volumes:
+    - ./configs/logstash/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    - ./mylogs.log:/usr/share/logstash/mylogs.log
+    depends_on:
+      - Elasticsearch
+    ports:
+    - '9600:9600'
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"    
+    networks:
+      - fablo_network_202308300640_basic
+
+  Kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.0-arm64
+    container_name: kibana
+    restart: always       
+    ports:
+    - '5601:5601'
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200  
+    depends_on:
+      - Elasticsearch  
+    networks:
+      - fablo_network_202308300640_basic
+
+  logspout:
+    image: my-custom-logspout:latest  
+    container_name: logspout
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - ROUTE_URIS=logstash+tcp://logstash:5000 
+    networks:
+      - fablo_network_202308300640_basic
+volumes:
+  elastic_data: {}
+
+networks:
+  fablo_network_202308300640_basic:
+    external: true
