@@ -27,7 +27,7 @@ services:
     ports:
     - '9600:9600'
     environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"    
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"  
     networks:
       - fablo_network_202308300640_basic
 
