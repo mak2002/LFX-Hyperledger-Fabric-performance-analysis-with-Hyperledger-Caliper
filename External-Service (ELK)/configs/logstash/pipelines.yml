@@ -9,3 +9,7 @@
 - pipeline.id: orderer-pipeline
   path.config: "/usr/share/logstash/pipeline/orderer.conf"
   pipeline.workers: 1
+
+- pipeline.id: default-pipeline
+  path.config: "/usr/share/logstash/pipeline/default.conf"
+  pipeline.workers: 1
