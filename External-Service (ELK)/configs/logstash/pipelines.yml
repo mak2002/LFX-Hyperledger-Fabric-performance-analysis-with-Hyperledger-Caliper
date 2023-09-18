@@ -5,3 +5,7 @@
 - pipeline.id: peer-pipeline
   path.config: "/usr/share/logstash/pipeline/peer.conf"
   pipeline.workers: 1
+
+- pipeline.id: orderer-pipeline
+  path.config: "/usr/share/logstash/pipeline/orderer.conf"
+  pipeline.workers: 1
