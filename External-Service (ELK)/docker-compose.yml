@@ -8,7 +8,8 @@ services:
     - elastic_data:/usr/share/elasticsearch/data/
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      discovery.type: single-node    
+      discovery.type: single-node   
+      LOGSPOUT: ignore 
     ports:
     - '9200:9200'
     - '9300:9300'
@@ -20,7 +21,9 @@ services:
     container_name: logstash
     restart: always
     volumes:
-    - ./configs/logstash/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    - ./configs/logstash/pipeline:/usr/share/logstash/pipeline/
+    - ./configs/logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
+    - ./configs/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
     - ./mylogs.log:/usr/share/logstash/mylogs.log
     depends_on:
       - Elasticsearch
@@ -28,6 +31,7 @@ services:
     - '9600:9600'
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"  
+      LOGSPOUT: ignore
     networks:
       - fablo_network_202308300640_basic
 
@@ -39,6 +43,7 @@ services:
     - '5601:5601'
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200  
+      - LOGSPOUT=ignore
     depends_on:
       - Elasticsearch  
     networks:
@@ -52,6 +57,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - ROUTE_URIS=logstash+tcp://logstash:5000 
+      - LOGSPOUT=ignore
     networks:
       - fablo_network_202308300640_basic
 volumes:
