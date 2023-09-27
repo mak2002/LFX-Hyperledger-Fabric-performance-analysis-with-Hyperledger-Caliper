@@ -1,1 +1,3 @@
 xpack.monitoring.enabled: true
+xpack.monitoring.elasticsearch.ssl.verification_mode: none
+pipeline.ecs_compatibility: disabled

@@ -5,6 +5,7 @@ services:
     container_name: elasticsearch
     restart: always
     volumes:
+    - ./configs/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     - elastic_data:/usr/share/elasticsearch/data/
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
@@ -23,15 +24,14 @@ services:
     volumes:
     - ./configs/logstash/pipeline:/usr/share/logstash/pipeline/
     - ./configs/logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
-    - ./configs/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
     - ./mylogs.log:/usr/share/logstash/mylogs.log
+    # - ./configs/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml <-- Disabled for now, as this was causing problem with logstash-to-elasticsearch connection
     depends_on:
       - Elasticsearch
     ports:
     - '9600:9600'
     environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"  
-      LOGSPOUT: ignore
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"    
     networks:
       - fablo_network_202308300640_basic
 
@@ -60,6 +60,7 @@ services:
       - LOGSPOUT=ignore
     networks:
       - fablo_network_202308300640_basic
+
 volumes:
   elastic_data: {}
 
