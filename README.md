@@ -1,5 +1,5 @@
 This is a tool to do performance analysis of Hyperledger Fabric, developed under Hyperledger Fabric Mentorship.
-## Working of External Service
+## 🎡 Working of External Service
 
 #### This service comprises two main components:
 
@@ -18,7 +18,7 @@ Navigate to /External-Service (ELK) and execute the command `docker-compose up -
 
 Once the Docker Pipeline is running, proceed to execute the Python Analysis Script for log processing and visualization of the system's performance. The script generates various diagrams such as Stacked Line charts and Sunburst charts based on the collected logs.
 
-## Introducing New Log Lines for Processing in Our Service
+## ❄️ Introducing New Log Lines for Processing in Our Service
 
 To add a new log line, analyze the logs available in this repository or provide your custom logs. The log files are organized within folders prefixed with `LOGS:`, encompassing both INFO and DEBUG level logs for the Fabric network.
 
