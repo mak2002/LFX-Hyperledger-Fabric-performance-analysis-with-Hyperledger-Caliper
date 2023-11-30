@@ -1,0 +1,408 @@
+[34m2023-10-23 03:53:07.155 UTC 0001 INFO[0m [nodeCmd] [34;1mserve[0m -> Starting peer:
+ Version: v2.5.4
+ Commit SHA: e1e8e2e
+ Go version: go1.20.6
+ OS/Arch: linux/amd64
+ Chaincode:
+  Base Docker Label: org.hyperledger.fabric
+  Docker Namespace: hyperledger
+[34m2023-10-23 03:53:07.162 UTC 0002 INFO[0m [nodeCmd] [34;1mserve[0m -> Peer config with combined core.yaml settings and environment variable overrides:
+chaincode:
+  builder: $(DOCKER_NS)/fabric-ccenv:$(TWO_DIGIT_VERSION)
+  executetimeout: 300s
+  externalbuilders:
+  - name: ccaas_builder
+    path: /opt/hyperledger/ccaas_builder
+    propagateEnvironment:
+    - CHAINCODE_AS_A_SERVICE_BUILDER_CONFIG
+  golang:
+    dynamiclink: false
+    runtime: $(DOCKER_NS)/fabric-baseos:$(TWO_DIGIT_VERSION)
+  installtimeout: 300s
+  java:
+    runtime: $(DOCKER_NS)/fabric-javaenv:$(TWO_DIGIT_VERSION)
+  keepalive: 0
+  logging:
+    format: '%{color}%{time:2006-01-02 15:04:05.000 MST} [%{module}] %{shortfunc}
+      -> %{level:.4s} %{id:03x}%{color:reset} %{message}'
+    level: info
+    shim: warning
+  mode: net
+  node:
+    runtime: $(DOCKER_NS)/fabric-nodeenv:$(TWO_DIGIT_VERSION)
+  pull: false
+  startuptimeout: 300s
+  system:
+    _lifecycle: enable
+    cscc: enable
+    lscc: enable
+    qscc: enable
+ledger:
+  history:
+    enablehistorydatabase: true
+  pvtdatastore:
+    collelgprocdbbatchesinterval: 1000
+    collelgprocmaxdbbatchsize: 5000
+    deprioritizeddatareconcilerinterval: 60m
+  snapshots:
+    rootdir: /var/hyperledger/production/snapshots
+  state:
+    couchdbconfig:
+      cachesize: 64
+      couchdbaddress: 127.0.0.1:5984
+      createglobalchangesdb: false
+      internalquerylimit: 1000
+      maxbatchupdatesize: 1000
+      maxretries: 3
+      maxretriesonstartup: 10
+      requesttimeout: 35s
+    statedatabase: goleveldb
+    totalquerylimit: 100000
+logging_level: ""
+metrics:
+  provider: prometheus
+  statsd:
+    address: 127.0.0.1:8125
+    network: udp
+    writeinterval: 10s
+operations:
+  listenaddress: peer0.org1.example.com:9444
+  tls:
+    clientauthrequired: false
+    clientrootcas:
+      files: []
+    enabled: false
+peer:
+  address: peer0.org1.example.com:7051
+  addressautodetect: false
+  authentication:
+    timewindow: 15m
+  bccsp:
+    default: SW
+    sw:
+      hash: SHA2
+      security: 256
+  client:
+    conntimeout: 3s
+  deliveryclient:
+    blockgossipenabled: true
+    conntimeout: 3s
+    reconnectbackoffthreshold: 3600s
+    reconnecttotaltimethreshold: 3600s
+  discovery:
+    authcacheenabled: true
+    authcachemaxsize: 1000
+    authcachepurgeretentionratio: 0.75
+    enabled: true
+    orgmembersallowedaccess: false
+  filesystempath: /var/hyperledger/production
+  gateway:
+    dialtimeout: 2m
+    enabled: true
+    endorsementtimeout: 30s
+  gossip:
+    aliveexpirationtimeout: 25s
+    alivetimeinterval: 5s
+    bootstrap: peer0.org1.example.com:7051
+    conntimeout: 2s
+    dialtimeout: 3s
+    digestwaittime: 1s
+    election:
+      leaderalivethreshold: 10s
+      leaderelectionduration: 5s
+      membershipsampleinterval: 1s
+      startupgraceperiod: 15s
+    externalendpoint: peer0.org1.example.com:7051
+    maxblockcounttostore: 10
+    maxconnectionattempts: 120
+    maxpropagationburstlatency: 10ms
+    maxpropagationburstsize: 10
+    membershiptrackerinterval: 5s
+    msgexpirationfactor: 20
+    orgleader: true
+    propagateiterations: 1
+    propagatepeernum: 3
+    publishcertperiod: 10s
+    publishstateinfointerval: 4s
+    pullinterval: 4s
+    pullpeernum: 3
+    pvtdata:
+      btlpullmargin: 10
+      implicitcollectiondisseminationpolicy:
+        maxpeercount: 1
+        requiredpeercount: 0
+      pullretrythreshold: 60s
+      pushacktimeout: 3s
+      reconcilebatchsize: 10
+      reconcilesleepinterval: 1m
+      reconciliationenabled: true
+      skippullinginvalidtransactionsduringcommit: false
+      transientstoremaxblockretention: 1000
+    reconnectinterval: 25s
+    recvbuffsize: 20
+    requeststateinfointerval: 4s
+    requestwaittime: 1500ms
+    responsewaittime: 2s
+    sendbuffsize: 200
+    skipblockverification: false
+    state:
+      batchsize: 10
+      blockbuffersize: 20
+      checkinterval: 10s
+      enabled: false
+      maxretries: 3
+      responsetimeout: 3s
+    useleaderelection: false
+  handlers:
+    authfilters:
+    - name: DefaultAuth
+    - name: ExpirationCheck
+    decorators:
+    - name: DefaultDecorator
+    endorsers:
+      escc:
+        name: DefaultEndorsement
+    validators:
+      vscc:
+        name: DefaultValidation
+  id: peer0.org1.example.com
+  keepalive:
+    client:
+      interval: 60s
+      timeout: 20s
+    deliveryclient:
+      interval: 60s
+      timeout: 20s
+    interval: 7200s
+    mininterval: 60s
+    timeout: 20s
+  limits:
+    concurrency:
+      deliverservice: 2500
+      endorserservice: 2500
+  listenaddress: 0.0.0.0:7051
+  localmspid: Org1MSP
+  localmsptype: bccsp
+  maxrecvmsgsize: 104857600
+  maxsendmsgsize: 104857600
+  mspconfigpath: /etc/hyperledger/fabric/msp
+  networkid: dev
+  profile:
+    enabled: "false"
+    listenaddress: 0.0.0.0:6060
+  tls:
+    cert:
+      file: /etc/hyperledger/fabric/tls/server.crt
+    clientauthrequired: false
+    clientrootcas:
+      files:
+      - tls/ca.crt
+    enabled: "true"
+    key:
+      file: /etc/hyperledger/fabric/tls/server.key
+    rootcert:
+      file: /etc/hyperledger/fabric/tls/ca.crt
+vm:
+  docker:
+    attachstdout: false
+    hostconfig:
+      logconfig:
+        config:
+          max-file: "5"
+          max-size: 50m
+        type: json-file
+      memory: 2147483648
+      networkmode: fabric_test
+    tls:
+      ca:
+        file: docker/ca.crt
+      cert:
+        file: docker/tls.crt
+      enabled: false
+      key:
+        file: docker/tls.key
+  endpoint: unix:///host/var/run/docker.sock
+[34m2023-10-23 03:53:07.164 UTC 0003 INFO[0m [peer] [34;1mgetLocalAddress[0m -> Auto-detected peer address: 172.19.0.5:7051
+[34m2023-10-23 03:53:07.164 UTC 0004 INFO[0m [peer] [34;1mgetLocalAddress[0m -> Returning peer0.org1.example.com:7051
+[34m2023-10-23 03:53:07.192 UTC 0005 INFO[0m [nodeCmd] [34;1minitGrpcSemaphores[0m -> concurrency limit for endorser service is 2500
+[34m2023-10-23 03:53:07.192 UTC 0006 INFO[0m [nodeCmd] [34;1minitGrpcSemaphores[0m -> concurrency limit for deliver service is 2500
+[34m2023-10-23 03:53:07.192 UTC 0007 INFO[0m [nodeCmd] [34;1mserve[0m -> Starting peer with TLS enabled
+[34m2023-10-23 03:53:07.225 UTC 0008 INFO[0m [certmonitor] [34;1mtrackCertExpiration[0m -> The enrollment certificate will expire on 2024-10-22 03:53:00 +0000 UTC
+[34m2023-10-23 03:53:07.225 UTC 0009 INFO[0m [certmonitor] [34;1mtrackCertExpiration[0m -> The server TLS certificate will expire on 2024-10-22 03:53:00 +0000 UTC
+[34m2023-10-23 03:53:07.226 UTC 000a INFO[0m [ledgermgmt] [34;1mNewLedgerMgr[0m -> Initializing LedgerMgr
+[34m2023-10-23 03:53:07.248 UTC 000b INFO[0m [leveldbhelper] [34;1mopenDBAndCheckFormat[0m -> DB is empty Setting db format as 2.0
+[34m2023-10-23 03:53:07.249 UTC 000c INFO[0m [blkstorage] [34;1mNewProvider[0m -> Creating new file ledger directory at /var/hyperledger/production/ledgersData/chains/chains
+[34m2023-10-23 03:53:07.276 UTC 000d INFO[0m [leveldbhelper] [34;1mopenDBAndCheckFormat[0m -> DB is empty Setting db format as 2.5
+[34m2023-10-23 03:53:07.284 UTC 000e INFO[0m [leveldbhelper] [34;1mopenDBAndCheckFormat[0m -> DB is empty Setting db format as 2.0
+[34m2023-10-23 03:53:07.313 UTC 000f INFO[0m [leveldbhelper] [34;1mopenDBAndCheckFormat[0m -> DB is empty Setting db format as 2.0
+[34m2023-10-23 03:53:07.318 UTC 0010 INFO[0m [ledgermgmt] [34;1mNewLedgerMgr[0m -> Initialized LedgerMgr
+[34m2023-10-23 03:53:07.325 UTC 0011 INFO[0m [gossip.service] [34;1mNew[0m -> Initialize gossip with endpoint peer0.org1.example.com:7051
+[34m2023-10-23 03:53:07.334 UTC 0012 INFO[0m [gossip.gossip] [34;1mNew[0m -> Creating gossip service with self membership of Endpoint: peer0.org1.example.com:7051, InternalEndpoint: peer0.org1.example.com:7051, PKI-ID: b744f90f799c3b9adba4db79735a006e477f42422920faeef1cc6cb640f3b4d3, Metadata: 
+[34m2023-10-23 03:53:07.335 UTC 0013 INFO[0m [gossip.gossip] [34;1mstart[0m -> Gossip instance peer0.org1.example.com:7051 started
+[34m2023-10-23 03:53:07.335 UTC 0014 INFO[0m [lifecycle] [34;1mInitializeLocalChaincodes[0m -> Initialized lifecycle cache with 0 already installed chaincodes
+[34m2023-10-23 03:53:07.336 UTC 0015 INFO[0m [nodeCmd] [34;1mcomputeChaincodeEndpoint[0m -> Entering computeChaincodeEndpoint with peerHostname: peer0.org1.example.com
+[34m2023-10-23 03:53:07.336 UTC 0016 INFO[0m [nodeCmd] [34;1mcomputeChaincodeEndpoint[0m -> Exit with ccEndpoint: peer0.org1.example.com:7052
+[34m2023-10-23 03:53:07.354 UTC 0017 INFO[0m [sccapi] [34;1mDeploySysCC[0m -> deploying system chaincode 'lscc'
+[34m2023-10-23 03:53:07.357 UTC 0018 INFO[0m [sccapi] [34;1mDeploySysCC[0m -> deploying system chaincode 'cscc'
+[34m2023-10-23 03:53:07.357 UTC 0019 INFO[0m [sccapi] [34;1mDeploySysCC[0m -> deploying system chaincode 'qscc'
+[34m2023-10-23 03:53:07.357 UTC 001a INFO[0m [sccapi] [34;1mDeploySysCC[0m -> deploying system chaincode '_lifecycle'
+[34m2023-10-23 03:53:07.357 UTC 001b INFO[0m [nodeCmd] [34;1mserve[0m -> Deployed system chaincodes
+[34m2023-10-23 03:53:07.359 UTC 001c INFO[0m [discovery] [34;1mNewService[0m -> Created with config TLS: true, authCacheMaxSize: 1000, authCachePurgeRatio: 0.750000
+[34m2023-10-23 03:53:07.359 UTC 001d INFO[0m [nodeCmd] [34;1mserve[0m -> Discovery service activated
+[34m2023-10-23 03:53:07.359 UTC 001e INFO[0m [nodeCmd] [34;1mserve[0m -> Starting peer with Gateway enabled
+[34m2023-10-23 03:53:07.359 UTC 001f INFO[0m [nodeCmd] [34;1mserve[0m -> Starting peer with ID=[peer0.org1.example.com], network ID=[dev], address=[peer0.org1.example.com:7051]
+[34m2023-10-23 03:53:07.360 UTC 0020 INFO[0m [nodeCmd] [34;1mserve[0m -> Started peer with ID=[peer0.org1.example.com], network ID=[dev], address=[peer0.org1.example.com:7051]
+[34m2023-10-23 03:53:07.360 UTC 0021 INFO[0m [kvledger] [34;1mLoadPreResetHeight[0m -> Loading prereset height from path [/var/hyperledger/production/ledgersData/chains]
+[34m2023-10-23 03:53:07.360 UTC 0022 INFO[0m [blkstorage] [34;1mpreResetHtFiles[0m -> No active channels passed
+[34m2023-10-23 03:53:13.880 UTC 0023 INFO[0m [ledgermgmt] [34;1mCreateLedger[0m -> Creating ledger [mychannel] with genesis block
+[34m2023-10-23 03:53:13.882 UTC 0024 INFO[0m [blkstorage] [34;1mnewBlockfileMgr[0m -> Getting block information from block storage
+[34m2023-10-23 03:53:13.900 UTC 0025 INFO[0m [kvledger] [34;1mcommit[0m -> [mychannel] Committed block [0] with 1 transaction(s) in 12ms (state_validation=2ms block_and_pvtdata_commit=5ms state_commit=2ms) commitHash=[]
+[34m2023-10-23 03:53:13.901 UTC 0026 INFO[0m [kvledger] [34;1mupdateLedgerStatus[0m -> Updating ledger [mychannel] status to [ACTIVE]
+[34m2023-10-23 03:53:13.901 UTC 0027 INFO[0m [ledgermgmt] [34;1mCreateLedger[0m -> Created ledger [mychannel] with genesis block
+[33m2023-10-23 03:53:13.907 UTC 0028 WARN[0m [peer.orderers] [33;1mUpdate[0m -> Config defines both orderer org specific endpoints and global endpoints, global endpoints will be ignored channel=mychannel
+[34m2023-10-23 03:53:13.910 UTC 0029 INFO[0m [gossip.gossip] [34;1mJoinChan[0m -> Joining gossip network of channel mychannel with 2 organizations
+[34m2023-10-23 03:53:13.910 UTC 002a INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> No configured anchor peers of Org1MSP for channel mychannel to learn about
+[34m2023-10-23 03:53:13.910 UTC 002b INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> No configured anchor peers of Org2MSP for channel mychannel to learn about
+[34m2023-10-23 03:53:13.911 UTC 002c INFO[0m [gateway] [34;1mconfigUpdate[0m -> Updating orderer config channel=mychannel
+[36m2023-10-23 03:53:13.911 UTC 002d DEBU[0m [gateway] [36;1mconfigUpdate[0m -> Channel orderer address=orderer.example.com:7050 mspid=OrdererMSP
+[34m2023-10-23 03:53:13.913 UTC 002e INFO[0m [gossip.state] [34;1mNewGossipStateProvider[0m -> Updating metadata information for channel mychannel, current ledger sequence is at = 0, next expected block is = 1
+[34m2023-10-23 03:53:13.913 UTC 002f INFO[0m [deliveryClient] [34;1mStartDeliverForChannel[0m -> This peer will retrieve blocks from ordering service and disseminate to other peers in the organization channel=mychannel
+[34m2023-10-23 03:53:13.921 UTC 0030 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: cscc duration: 49ms channel= txID=30556fe8
+[34m2023-10-23 03:53:13.921 UTC 0031 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.19.0.1:35516 grpc.code=OK grpc.call_duration=54.299417ms
+[34m2023-10-23 03:53:13.945 UTC 0032 INFO[0m [peer.blocksprovider] [34;1mDeliverBlocks[0m -> Pulling next blocks from ordering service channel=mychannel orderer-address=orderer.example.com:7050 nextBlock=1
+[34m2023-10-23 03:53:18.627 UTC 0033 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [1] from buffer channel=mychannel
+[33m2023-10-23 03:53:18.635 UTC 0034 WARN[0m [peer.orderers] [33;1mUpdate[0m -> Config defines both orderer org specific endpoints and global endpoints, global endpoints will be ignored channel=mychannel
+[34m2023-10-23 03:53:18.636 UTC 0035 INFO[0m [gossip.gossip] [34;1mJoinChan[0m -> Joining gossip network of channel mychannel with 2 organizations
+[34m2023-10-23 03:53:18.636 UTC 0036 INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> No configured anchor peers of Org2MSP for channel mychannel to learn about
+[34m2023-10-23 03:53:18.636 UTC 0037 INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> Learning about the configured anchor peers of Org1MSP for channel mychannel: [{peer0.org1.example.com 7051}]
+[34m2023-10-23 03:53:18.636 UTC 0038 INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> Anchor peer for channel mychannel with same endpoint, skipping connecting to myself
+[34m2023-10-23 03:53:18.636 UTC 0039 INFO[0m [gateway] [34;1mconfigUpdate[0m -> Updating orderer config channel=mychannel
+[36m2023-10-23 03:53:18.636 UTC 003a DEBU[0m [gateway] [36;1mconfigUpdate[0m -> Channel orderer address=orderer.example.com:7050 mspid=OrdererMSP
+[34m2023-10-23 03:53:18.636 UTC 003b INFO[0m [committer.txvalidator] [34;1mvalidateTx[0m -> Config transaction validated and applied to channel resources channel=mychannel
+[34m2023-10-23 03:53:18.636 UTC 003c INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [mychannel] Validated block [1] in 8ms
+[34m2023-10-23 03:53:18.643 UTC 003d INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2023-10-23T03:53:20.642Z grpc.peer_address=172.19.0.6:34770 grpc.peer_subject="CN=peer0,OU=peer,O=Hyperledger,ST=North Carolina,C=US" grpc.code=OK grpc.call_duration=484.292µs
+[34m2023-10-23 03:53:18.647 UTC 003e INFO[0m [kvledger] [34;1mcommit[0m -> [mychannel] Committed block [1] with 1 transaction(s) in 9ms (state_validation=0ms block_and_pvtdata_commit=2ms state_commit=5ms) commitHash=[47dc540c94ceb704a23875c11273e16bb0b8a87aed84de911f2133568115f254]
+[34m2023-10-23 03:53:18.650 UTC 003f INFO[0m [gossip.comm] [34;1mGossipStream[0m -> Peer 6cc84fe02a4f711f35ed5d3b0cb23d8387a9ea171bfaaffe838b342bfe2f0e9d (172.19.0.6:34770) probed us
+[34m2023-10-23 03:53:18.650 UTC 0040 INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=gossip.Gossip grpc.method=GossipStream grpc.request_deadline=2023-10-23T03:53:28.644Z grpc.peer_address=172.19.0.6:34770 grpc.peer_subject="CN=peer0,OU=peer,O=Hyperledger,ST=North Carolina,C=US" grpc.code=OK grpc.call_duration=5.232042ms
+[34m2023-10-23 03:53:18.654 UTC 0041 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2023-10-23T03:53:20.654Z grpc.peer_address=172.19.0.6:34776 grpc.peer_subject="CN=peer0,OU=peer,O=Hyperledger,ST=North Carolina,C=US" grpc.code=OK grpc.call_duration=83.208µs
+[34m2023-10-23 03:53:20.059 UTC 0042 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [2] from buffer channel=mychannel
+[33m2023-10-23 03:53:20.063 UTC 0043 WARN[0m [peer.orderers] [33;1mUpdate[0m -> Config defines both orderer org specific endpoints and global endpoints, global endpoints will be ignored channel=mychannel
+[34m2023-10-23 03:53:20.063 UTC 0044 INFO[0m [gossip.gossip] [34;1mJoinChan[0m -> Joining gossip network of channel mychannel with 2 organizations
+[34m2023-10-23 03:53:20.063 UTC 0045 INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> Learning about the configured anchor peers of Org2MSP for channel mychannel: [{peer0.org2.example.com 9051}]
+[34m2023-10-23 03:53:20.064 UTC 0046 INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> Learning about the configured anchor peers of Org1MSP for channel mychannel: [{peer0.org1.example.com 7051}]
+[34m2023-10-23 03:53:20.066 UTC 0047 INFO[0m [gossip.gossip] [34;1mlearnAnchorPeers[0m -> Anchor peer for channel mychannel with same endpoint, skipping connecting to myself
+[34m2023-10-23 03:53:20.066 UTC 0048 INFO[0m [gateway] [34;1mconfigUpdate[0m -> Updating orderer config channel=mychannel
+[36m2023-10-23 03:53:20.066 UTC 0049 DEBU[0m [gateway] [36;1mconfigUpdate[0m -> Channel orderer address=orderer.example.com:7050 mspid=OrdererMSP
+[34m2023-10-23 03:53:20.066 UTC 004a INFO[0m [committer.txvalidator] [34;1mvalidateTx[0m -> Config transaction validated and applied to channel resources channel=mychannel
+[34m2023-10-23 03:53:20.066 UTC 004b INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [mychannel] Validated block [2] in 7ms
+[34m2023-10-23 03:53:20.066 UTC 004c INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gossip.Gossip grpc.method=Ping grpc.request_deadline=2023-10-23T03:53:22.066Z grpc.peer_address=172.19.0.6:34786 grpc.peer_subject="CN=peer0,OU=peer,O=Hyperledger,ST=North Carolina,C=US" grpc.code=OK grpc.call_duration=39.375µs
+[34m2023-10-23 03:53:20.069 UTC 004d INFO[0m [gossip.comm] [34;1mGossipStream[0m -> Peer 6cc84fe02a4f711f35ed5d3b0cb23d8387a9ea171bfaaffe838b342bfe2f0e9d (172.19.0.6:34786) probed us
+[34m2023-10-23 03:53:20.069 UTC 004e INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=gossip.Gossip grpc.method=GossipStream grpc.request_deadline=2023-10-23T03:53:30.067Z grpc.peer_address=172.19.0.6:34786 grpc.peer_subject="CN=peer0,OU=peer,O=Hyperledger,ST=North Carolina,C=US" grpc.code=OK grpc.call_duration=1.675875ms
+[34m2023-10-23 03:53:20.075 UTC 004f INFO[0m [kvledger] [34;1mcommit[0m -> [mychannel] Committed block [2] with 1 transaction(s) in 8ms (state_validation=0ms block_and_pvtdata_commit=5ms state_commit=1ms) commitHash=[5f88b61407b149a48413433f4670c46531e5c4a8febdc339a9536ff8716a559e]
+[34m2023-10-23 03:53:23.912 UTC 0050 INFO[0m [gossip.channel] [34;1mreportMembershipChanges[0m -> [[mychannel] Membership view has changed. peers went online:  [[peer0.org2.example.com:9051 ]] , current view:  [[peer0.org2.example.com:9051 ]]]
+[34m2023-10-23 03:54:31.038 UTC 0051 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: _lifecycle duration: 7ms channel= txID=6006d581
+[34m2023-10-23 03:54:31.039 UTC 0052 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.19.0.1:56552 grpc.code=OK grpc.call_duration=12.230291ms
+[34m2023-10-23 03:54:31.830 UTC 0053 INFO[0m [chaincode.externalbuilder.ccaas_builder] [34;1mwaitForExit[0m -> ::Detect command=detect
+[34m2023-10-23 03:54:31.841 UTC 0054 INFO[0m [chaincode.externalbuilder.ccaas_builder] [34;1mwaitForExit[0m -> ::Error: chaincode type not supported: golang command=detect
+[34m2023-10-23 03:54:44.534 UTC 0055 INFO[0m [lifecycle] [34;1mInstallChaincode[0m -> Successfully installed chaincode with package ID 'basic_1.0:e4de097efb5be42d96aebc4bde18eea848aad0f5453453ba2aad97f2e41e0d57'
+[34m2023-10-23 03:54:44.535 UTC 0056 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: _lifecycle duration: 13361ms channel= txID=2f6df70b
+[34m2023-10-23 03:54:44.535 UTC 0057 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.19.0.1:56568 grpc.code=OK grpc.call_duration=13.404140464s
+[34m2023-10-23 03:54:56.601 UTC 0058 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: _lifecycle duration: 1ms channel= txID=2a1f44ff
+[34m2023-10-23 03:54:56.601 UTC 0059 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.19.0.1:39344 grpc.code=OK grpc.call_duration=2.2365ms
+[34m2023-10-23 03:54:56.676 UTC 005a INFO[0m [lifecycle] [34;1mApproveChaincodeDefinitionForOrg[0m -> Successfully endorsed chaincode approval with name 'basic', package ID 'basic_1.0:e4de097efb5be42d96aebc4bde18eea848aad0f5453453ba2aad97f2e41e0d57', on channel 'mychannel' with definition {sequence: 1, endorsement info: (version: '1.0', plugin: 'escc', init required: false), validation info: (plugin: 'vscc', policy: '12202f4368616e6e656c2f4170706c69636174696f6e2f456e646f7273656d656e74'), collections: ()}
+[34m2023-10-23 03:54:56.676 UTC 005b INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: _lifecycle duration: 8ms channel=mychannel txID=e5a5bb25
+[34m2023-10-23 03:54:56.682 UTC 005c INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.19.0.1:39348 grpc.code=OK grpc.call_duration=17.452541ms
+[34m2023-10-23 03:54:58.714 UTC 005d INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [3] from buffer channel=mychannel
+[34m2023-10-23 03:54:58.722 UTC 005e INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [mychannel] Validated block [3] in 7ms
+[34m2023-10-23 03:54:58.724 UTC 005f INFO[0m [gossip.privdata] [34;1mRetrievePvtdata[0m -> Successfully fetched (or marked to reconcile later) all 1 eligible collection private write sets for block [3] (0 from local cache, 1 from transient store, 0 from other peers) channel=mychannel
+[34m2023-10-23 03:54:58.734 UTC 0060 INFO[0m [kvledger] [34;1mcommit[0m -> [mychannel] Committed block [3] with 1 transaction(s) in 9ms (state_validation=2ms block_and_pvtdata_commit=4ms state_commit=1ms) commitHash=[387ab9048fa453ecb2888000a4662cd4609a98b4eaf88137f2a07ad17e750e14]
+[34m2023-10-23 03:54:58.750 UTC 0061 INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=protos.Deliver grpc.method=DeliverFiltered grpc.request_deadline=2023-10-23T03:55:26.683Z grpc.peer_address=172.19.0.1:39362 error="context finished before block retrieved: context canceled" grpc.code=Unknown grpc.call_duration=2.070670501s
+[34m2023-10-23 03:55:01.851 UTC 0062 INFO[0m [lifecycle] [34;1mCheckCommitReadiness[0m -> Successfully checked commit readiness of chaincode name 'basic' on channel 'mychannel' with definition {sequence: 1, endorsement info: (version: '1.0', plugin: 'escc', init required: false), validation info: (plugin: 'vscc', policy: '12202f4368616e6e656c2f4170706c69636174696f6e2f456e646f7273656d656e74'), collections: (<nil>)}
+[34m2023-10-23 03:55:01.852 UTC 0063 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: _lifecycle duration: 8ms channel=mychannel txID=884a9cdc
+[34m2023-10-23 03:55:01.853 UTC 0064 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.19.0.1:39376 grpc.code=OK grpc.call_duration=10.788583ms
+[34m2023-10-23 03:55:07.036 UTC 0065 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [4] from buffer channel=mychannel
+[34m2023-10-23 03:55:07.042 UTC 0066 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [mychannel] Validated block [4] in 6ms
+[34m2023-10-23 03:55:07.057 UTC 0067 INFO[0m [kvledger] [34;1mcommit[0m -> [mychannel] Committed block [4] with 1 transaction(s) in 12ms (state_validation=0ms block_and_pvtdata_commit=7ms state_commit=3ms) commitHash=[6d79acff207f7c81f919be339624a46aac09915799244246dc3131ff87b1da79]
+[34m2023-10-23 03:55:10.157 UTC 0068 INFO[0m [lifecycle] [34;1mCheckCommitReadiness[0m -> Successfully checked commit readiness of chaincode name 'basic' on channel 'mychannel' with definition {sequence: 1, endorsement info: (version: '1.0', plugin: 'escc', init required: false), validation info: (plugin: 'vscc', policy: '12202f4368616e6e656c2f4170706c69636174696f6e2f456e646f7273656d656e74'), collections: (<nil>)}
+[34m2023-10-23 03:55:10.158 UTC 0069 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: _lifecycle duration: 4ms channel=mychannel txID=4a7e3604
+[34m2023-10-23 03:55:10.158 UTC 006a INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.19.0.1:42756 grpc.code=OK grpc.call_duration=6.386ms
+[34m2023-10-23 03:55:13.330 UTC 006b INFO[0m [lifecycle] [34;1mCheckCommitReadiness[0m -> Successfully checked commit readiness of chaincode name 'basic' on channel 'mychannel' with definition {sequence: 1, endorsement info: (version: '1.0', plugin: 'escc', init required: false), validation info: (plugin: 'vscc', policy: '12202f4368616e6e656c2f4170706c69636174696f6e2f456e646f7273656d656e74'), collections: (<nil>)}
+[34m2023-10-23 03:55:13.331 UTC 006c INFO[0m [lifecycle] [34;1mCommitChaincodeDefinition[0m -> Successfully endorsed commit for chaincode name 'basic' on channel 'mychannel' with definition {sequence: 1, endorsement info: (version: '1.0', plugin: 'escc', init required: false), validation info: (plugin: 'vscc', policy: '12202f4368616e6e656c2f4170706c69636174696f6e2f456e646f7273656d656e74'), collections: (<nil>)}
+[34m2023-10-23 03:55:13.331 UTC 006d INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: _lifecycle duration: 2ms channel=mychannel txID=40222833
+[34m2023-10-23 03:55:13.331 UTC 006e INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.19.0.1:60534 grpc.code=OK grpc.call_duration=3.434792ms
+[34m2023-10-23 03:55:15.361 UTC 006f INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [5] from buffer channel=mychannel
+[34m2023-10-23 03:55:15.367 UTC 0070 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [mychannel] Validated block [5] in 5ms
+[34m2023-10-23 03:55:15.369 UTC 0071 INFO[0m [lifecycle] [34;1mupdate[0m -> Updating cached definition for chaincode 'basic' on channel 'mychannel'
+[34m2023-10-23 03:55:15.372 UTC 0072 INFO[0m [lifecycle] [34;1mupdate[0m -> Chaincode with package ID 'basic_1.0:e4de097efb5be42d96aebc4bde18eea848aad0f5453453ba2aad97f2e41e0d57' now available on channel mychannel for chaincode definition basic:1.0
+[34m2023-10-23 03:55:15.502 UTC 0073 INFO[0m [cceventmgmt] [34;1mHandleStateUpdates[0m -> Channel [mychannel]: Handling deploy or update of chaincode [basic]
+[34m2023-10-23 03:55:15.507 UTC 0074 INFO[0m [kvledger] [34;1mcommit[0m -> [mychannel] Committed block [5] with 1 transaction(s) in 139ms (state_validation=134ms block_and_pvtdata_commit=2ms state_commit=1ms) commitHash=[fb5a0f77f14a9b493c82d49643c0c3ab2261f72bab485efaee6990d87945a4f4]
+[34m2023-10-23 03:55:15.511 UTC 0075 INFO[0m [comm.grpc.server] [34;1m1[0m -> streaming call completed grpc.service=protos.Deliver grpc.method=DeliverFiltered grpc.request_deadline=2023-10-23T03:55:43.336Z grpc.peer_address=172.19.0.1:60544 error="context finished before block retrieved: context canceled" grpc.code=Unknown grpc.call_duration=2.174184585s
+[34m2023-10-23 03:55:18.595 UTC 0076 INFO[0m [lifecycle] [34;1mQueryChaincodeDefinition[0m -> Successfully queried chaincode name 'basic' with definition {sequence: 1, endorsement info: (version: '1.0', plugin: 'escc', init required: false), validation info: (plugin: 'vscc', policy: '12202f4368616e6e656c2f4170706c69636174696f6e2f456e646f7273656d656e74'), collections: ()},
+[34m2023-10-23 03:55:18.598 UTC 0077 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: _lifecycle duration: 7ms channel=mychannel txID=85786448
+[34m2023-10-23 03:55:18.599 UTC 0078 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=protos.Endorser grpc.method=ProcessProposal grpc.peer_address=172.19.0.1:60552 grpc.code=OK grpc.call_duration=9.028709ms
+[34m2023-10-23 03:56:08.387 UTC 0079 INFO[0m [gateway] [34;1mlookupEndorser[0m -> Attempting to connect to endorser endpoint=peer0.org2.example.com:9051
+[34m2023-10-23 03:56:08.394 UTC 007a INFO[0m [gateway] [34;1mconnectChannelPeers[0m -> Added peer to registry: peer0.org2.example.com:9051
+[36m2023-10-23 03:56:08.394 UTC 007b DEBU[0m [gateway] [36;1mfunc1[0m -> Found remote endorser endpoint=peer0.org2.example.com:9051
+[36m2023-10-23 03:56:08.394 UTC 007c DEBU[0m [gateway] [36;1mfunc1[0m -> Found local endorser pkiID=b744f90f799c3b9adba4db79735a006e477f42422920faeef1cc6cb640f3b4d3
+[36m2023-10-23 03:56:08.395 UTC 007d DEBU[0m [gateway] [36;1mplanFromFirstEndorser[0m -> Sending to first endorser: MSPID=Org1MSP endpoint=peer0.org1.example.com:7051
+[34m2023-10-23 03:56:08.409 UTC 007e INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: basic duration: 7ms channel=mychannel txID=1e1cf43e
+[36m2023-10-23 03:56:08.417 UTC 007f DEBU[0m [gateway] [36;1mfunc1[0m -> Found local endorser pkiID=b744f90f799c3b9adba4db79735a006e477f42422920faeef1cc6cb640f3b4d3
+[36m2023-10-23 03:56:08.417 UTC 0080 DEBU[0m [gateway] [36;1mfunc1[0m -> Found remote endorser endpoint=peer0.org2.example.com:9051
+[36m2023-10-23 03:56:08.418 UTC 0081 DEBU[0m [gateway] [36;1mfunc1[0m -> Sending to endorser: channel=mychannel chaincode=basic txID=1e1cf43ec491a80354b698e19dbfa4b61a902d2dec049e01aa43faeacf609361 MSPID=Org2MSP endpoint=peer0.org2.example.com:9051
+[36m2023-10-23 03:56:08.431 UTC 0082 DEBU[0m [gateway] [36;1mprocessProposal[0m -> Endorse call to endorser returned success channel=mychannel chaincode=basic txID=1e1cf43ec491a80354b698e19dbfa4b61a902d2dec049e01aa43faeacf609361 MSPID=Org2MSP endpoint=peer0.org2.example.com:9051 status=200 message=
+[34m2023-10-23 03:56:08.432 UTC 0083 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2023-10-23T03:56:23.363Z grpc.peer_address=172.19.0.1:41460 grpc.code=OK grpc.call_duration=47.940625ms
+[34m2023-10-23 03:56:08.436 UTC 0084 INFO[0m [gateway] [34;1morderers[0m -> Added orderer to registry address=orderer.example.com:7050
+[34m2023-10-23 03:56:08.436 UTC 0085 INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=1e1cf43ec491a80354b698e19dbfa4b61a902d2dec049e01aa43faeacf609361 endpoint=orderer.example.com:7050
+[34m2023-10-23 03:56:08.447 UTC 0086 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2023-10-23T03:56:13.435Z grpc.peer_address=172.19.0.1:41460 grpc.code=OK grpc.call_duration=11.758667ms
+[34m2023-10-23 03:56:10.469 UTC 0087 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [6] from buffer channel=mychannel
+[34m2023-10-23 03:56:10.474 UTC 0088 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [mychannel] Validated block [6] in 4ms
+[34m2023-10-23 03:56:10.486 UTC 0089 INFO[0m [kvledger] [34;1mcommit[0m -> [mychannel] Committed block [6] with 1 transaction(s) in 10ms (state_validation=1ms block_and_pvtdata_commit=5ms state_commit=2ms) commitHash=[311b9366f160d1d75df6d68853114f55241db96cc26610939dba49f45e27898e]
+[34m2023-10-23 03:56:10.487 UTC 008a INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2023-10-23T03:57:08.448Z grpc.peer_address=172.19.0.1:41460 grpc.code=OK grpc.call_duration=2.038379501s
+[36m2023-10-23 03:56:10.492 UTC 008b DEBU[0m [gateway] [36;1mfunc1[0m -> Found remote endorser endpoint=peer0.org2.example.com:9051
+[36m2023-10-23 03:56:10.492 UTC 008c DEBU[0m [gateway] [36;1mfunc1[0m -> Found local endorser pkiID=b744f90f799c3b9adba4db79735a006e477f42422920faeef1cc6cb640f3b4d3
+[36m2023-10-23 03:56:10.492 UTC 008d DEBU[0m [gateway] [36;1mEvaluate[0m -> Sending to peer: channel=mychannel chaincode=basic txID=ab3382538265a4d1a0de0dec16462fe2262689cbbddb00dcd9bddb76b3cf7b81 MSPID=Org1MSP endpoint=peer0.org1.example.com:7051
+[34m2023-10-23 03:56:10.502 UTC 008e INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: basic duration: 8ms channel=mychannel txID=ab338253
+[36m2023-10-23 03:56:10.504 UTC 008f DEBU[0m [gateway] [36;1mEvaluate[0m -> Evaluate call to endorser returned success channel=mychannel txID=ab3382538265a4d1a0de0dec16462fe2262689cbbddb00dcd9bddb76b3cf7b81 endorserAddress=peer0.org1.example.com:7051 endorserMspid=Org1MSP status=200 message=
+[34m2023-10-23 03:56:10.504 UTC 0090 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2023-10-23T03:56:15.49Z grpc.peer_address=172.19.0.1:41460 grpc.code=OK grpc.call_duration=13.419625ms
+[36m2023-10-23 03:56:10.508 UTC 0091 DEBU[0m [gateway] [36;1mfunc1[0m -> Found remote endorser endpoint=peer0.org2.example.com:9051
+[36m2023-10-23 03:56:10.508 UTC 0092 DEBU[0m [gateway] [36;1mfunc1[0m -> Found local endorser pkiID=b744f90f799c3b9adba4db79735a006e477f42422920faeef1cc6cb640f3b4d3
+[36m2023-10-23 03:56:10.508 UTC 0093 DEBU[0m [gateway] [36;1mplanFromFirstEndorser[0m -> Sending to first endorser: MSPID=Org1MSP endpoint=peer0.org1.example.com:7051
+[34m2023-10-23 03:56:10.512 UTC 0094 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: basic duration: 2ms channel=mychannel txID=1e21fac8
+[36m2023-10-23 03:56:10.513 UTC 0095 DEBU[0m [gateway] [36;1mfunc1[0m -> Found remote endorser endpoint=peer0.org2.example.com:9051
+[36m2023-10-23 03:56:10.513 UTC 0096 DEBU[0m [gateway] [36;1mfunc1[0m -> Found local endorser pkiID=b744f90f799c3b9adba4db79735a006e477f42422920faeef1cc6cb640f3b4d3
+[36m2023-10-23 03:56:10.514 UTC 0097 DEBU[0m [gateway] [36;1mfunc1[0m -> Sending to endorser: channel=mychannel chaincode=basic txID=1e21fac848d9dd4d4c6a89d029f6341393fec8e936ab64ce3562108b40d5229f MSPID=Org2MSP endpoint=peer0.org2.example.com:9051
+[36m2023-10-23 03:56:10.523 UTC 0098 DEBU[0m [gateway] [36;1mprocessProposal[0m -> Endorse call to endorser returned success channel=mychannel chaincode=basic txID=1e21fac848d9dd4d4c6a89d029f6341393fec8e936ab64ce3562108b40d5229f MSPID=Org2MSP endpoint=peer0.org2.example.com:9051 status=200 message=
+[34m2023-10-23 03:56:10.523 UTC 0099 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2023-10-23T03:56:25.507Z grpc.peer_address=172.19.0.1:41460 grpc.code=OK grpc.call_duration=14.974041ms
+[34m2023-10-23 03:56:10.526 UTC 009a INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=1e21fac848d9dd4d4c6a89d029f6341393fec8e936ab64ce3562108b40d5229f endpoint=orderer.example.com:7050
+[34m2023-10-23 03:56:10.530 UTC 009b INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2023-10-23T03:56:15.526Z grpc.peer_address=172.19.0.1:41460 grpc.code=OK grpc.call_duration=3.4695ms
+[34m2023-10-23 03:56:12.542 UTC 009c INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [7] from buffer channel=mychannel
+[34m2023-10-23 03:56:12.551 UTC 009d INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [mychannel] Validated block [7] in 8ms
+[34m2023-10-23 03:56:12.559 UTC 009e INFO[0m [kvledger] [34;1mcommit[0m -> [mychannel] Committed block [7] with 1 transaction(s) in 7ms (state_validation=0ms block_and_pvtdata_commit=3ms state_commit=0ms) commitHash=[e5556a8894d153bc3f63573c034a5ae0493894cfa5cb35a6a8fb0f2b71e06107]
+[34m2023-10-23 03:56:12.559 UTC 009f INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2023-10-23T03:57:10.531Z grpc.peer_address=172.19.0.1:41460 grpc.code=OK grpc.call_duration=2.027549501s
+[36m2023-10-23 03:56:12.561 UTC 00a0 DEBU[0m [gateway] [36;1mfunc1[0m -> Found remote endorser endpoint=peer0.org2.example.com:9051
+[36m2023-10-23 03:56:12.561 UTC 00a1 DEBU[0m [gateway] [36;1mfunc1[0m -> Found local endorser pkiID=b744f90f799c3b9adba4db79735a006e477f42422920faeef1cc6cb640f3b4d3
+[36m2023-10-23 03:56:12.561 UTC 00a2 DEBU[0m [gateway] [36;1mEvaluate[0m -> Sending to peer: channel=mychannel chaincode=basic txID=123aad1a212352c9cc03550bfa598d58b6951e27885d11b06551fbccf510ae70 MSPID=Org1MSP endpoint=peer0.org1.example.com:7051
+[34m2023-10-23 03:56:12.564 UTC 00a3 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: basic duration: 1ms channel=mychannel txID=123aad1a
+[36m2023-10-23 03:56:12.564 UTC 00a4 DEBU[0m [gateway] [36;1mEvaluate[0m -> Evaluate call to endorser returned success channel=mychannel txID=123aad1a212352c9cc03550bfa598d58b6951e27885d11b06551fbccf510ae70 endorserAddress=peer0.org1.example.com:7051 endorserMspid=Org1MSP status=200 message=
+[34m2023-10-23 03:56:12.564 UTC 00a5 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Evaluate grpc.request_deadline=2023-10-23T03:56:17.561Z grpc.peer_address=172.19.0.1:41460 grpc.code=OK grpc.call_duration=3.809542ms
+[36m2023-10-23 03:56:12.566 UTC 00a6 DEBU[0m [gateway] [36;1mfunc1[0m -> Found remote endorser endpoint=peer0.org2.example.com:9051
+[36m2023-10-23 03:56:12.566 UTC 00a7 DEBU[0m [gateway] [36;1mfunc1[0m -> Found local endorser pkiID=b744f90f799c3b9adba4db79735a006e477f42422920faeef1cc6cb640f3b4d3
+[36m2023-10-23 03:56:12.566 UTC 00a8 DEBU[0m [gateway] [36;1mplanFromFirstEndorser[0m -> Sending to first endorser: MSPID=Org1MSP endpoint=peer0.org1.example.com:7051
+[34m2023-10-23 03:56:12.569 UTC 00a9 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: basic duration: 1ms channel=mychannel txID=b536325b
+[36m2023-10-23 03:56:12.569 UTC 00aa DEBU[0m [gateway] [36;1mfunc1[0m -> Found remote endorser endpoint=peer0.org2.example.com:9051
+[36m2023-10-23 03:56:12.570 UTC 00ab DEBU[0m [gateway] [36;1mfunc1[0m -> Found local endorser pkiID=b744f90f799c3b9adba4db79735a006e477f42422920faeef1cc6cb640f3b4d3
+[36m2023-10-23 03:56:12.570 UTC 00ac DEBU[0m [gateway] [36;1mfunc1[0m -> Sending to endorser: channel=mychannel chaincode=basic txID=b536325bb299a9e2313ab623a2585409328e3269feac5997f98db0986a844671 MSPID=Org2MSP endpoint=peer0.org2.example.com:9051
+[36m2023-10-23 03:56:12.576 UTC 00ad DEBU[0m [gateway] [36;1mprocessProposal[0m -> Endorse call to endorser returned success channel=mychannel chaincode=basic txID=b536325bb299a9e2313ab623a2585409328e3269feac5997f98db0986a844671 MSPID=Org2MSP endpoint=peer0.org2.example.com:9051 status=200 message=
+[34m2023-10-23 03:56:12.576 UTC 00ae INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2023-10-23T03:56:27.566Z grpc.peer_address=172.19.0.1:41460 grpc.code=OK grpc.call_duration=9.778708ms
+[34m2023-10-23 03:56:12.578 UTC 00af INFO[0m [gateway] [34;1mSubmit[0m -> Sending transaction to orderer txID=b536325bb299a9e2313ab623a2585409328e3269feac5997f98db0986a844671 endpoint=orderer.example.com:7050
+[34m2023-10-23 03:56:12.580 UTC 00b0 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Submit grpc.request_deadline=2023-10-23T03:56:17.577Z grpc.peer_address=172.19.0.1:41460 grpc.code=OK grpc.call_duration=2.468542ms
+[34m2023-10-23 03:56:14.603 UTC 00b1 INFO[0m [gossip.privdata] [34;1mStoreBlock[0m -> Received block [8] from buffer channel=mychannel
+[34m2023-10-23 03:56:14.609 UTC 00b2 INFO[0m [committer.txvalidator] [34;1mValidate[0m -> [mychannel] Validated block [8] in 5ms
+[34m2023-10-23 03:56:14.621 UTC 00b3 INFO[0m [kvledger] [34;1mcommit[0m -> [mychannel] Committed block [8] with 1 transaction(s) in 11ms (state_validation=0ms block_and_pvtdata_commit=5ms state_commit=1ms) commitHash=[960f0895ded040b1370a9ce03b7e7f7c87894fe01b45e45f903935a38770a2ad]
+[34m2023-10-23 03:56:14.622 UTC 00b4 INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=CommitStatus grpc.request_deadline=2023-10-23T03:57:12.581Z grpc.peer_address=172.19.0.1:41460 grpc.code=OK grpc.call_duration=2.040523251s
+[36m2023-10-23 03:56:14.626 UTC 00b5 DEBU[0m [gateway] [36;1mfunc1[0m -> Found remote endorser endpoint=peer0.org2.example.com:9051
+[36m2023-10-23 03:56:14.626 UTC 00b6 DEBU[0m [gateway] [36;1mfunc1[0m -> Found local endorser pkiID=b744f90f799c3b9adba4db79735a006e477f42422920faeef1cc6cb640f3b4d3
+[36m2023-10-23 03:56:14.626 UTC 00b7 DEBU[0m [gateway] [36;1mplanFromFirstEndorser[0m -> Sending to first endorser: MSPID=Org1MSP endpoint=peer0.org1.example.com:7051
+[34m2023-10-23 03:56:14.630 UTC 00b8 INFO[0m [endorser] [34;1mcallChaincode[0m -> finished chaincode: basic duration: 2ms channel=mychannel txID=a58d8c4b
+[33m2023-10-23 03:56:14.631 UTC 00b9 WARN[0m [gateway] [33;1mfunc1[0m -> Endorse call to endorser failed channel=mychannel chaincode=basic txID=a58d8c4b3177f907338dfa1f352378bb085c91066e4ba5e009efecc3f9b263ba endorserAddress=peer0.org1.example.com:7051 endorserMspid=Org1MSP error="chaincode response 500, the asset asset70 does not exist"
+[34m2023-10-23 03:56:14.632 UTC 00ba INFO[0m [comm.grpc.server] [34;1m1[0m -> unary call completed grpc.service=gateway.Gateway grpc.method=Endorse grpc.request_deadline=2023-10-23T03:56:29.625Z grpc.peer_address=172.19.0.1:41460 error="rpc error: code = Aborted desc = failed to endorse transaction, see attached details for more info" grpc.code=Aborted grpc.call_duration=6.451917ms
