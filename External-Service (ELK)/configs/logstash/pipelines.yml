@@ -13,3 +13,7 @@
 - pipeline.id: default-pipeline
   path.config: "/usr/share/logstash/pipeline/default.conf"
   pipeline.workers: 1
+
+# - pipeline.id: output-pipeline
+#   path.config: "/usr/share/logstash/pipeline/output.conf"
+#   pipeline.workers: 1

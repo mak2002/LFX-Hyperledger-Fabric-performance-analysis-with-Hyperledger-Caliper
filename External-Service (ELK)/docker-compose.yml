@@ -15,25 +15,25 @@ services:
     - '9200:9200'
     - '9300:9300'
     networks:
-      - fablo_network_202308300640_basic
+      - fabric_test
 
   Logstash:
-    image: docker.elastic.co/logstash/logstash:7.17.0-arm64
+    image: custom-logstash-image:latest
     container_name: logstash
     restart: always
     volumes:
-    - ./configs/logstash/pipeline:/usr/share/logstash/pipeline/
-    - ./configs/logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
-    - ./mylogs.log:/usr/share/logstash/mylogs.log
-    # - ./configs/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml <-- Disabled for now, as this was causing problem with logstash-to-elasticsearch connection
+      - ./configs/logstash/pipeline:/usr/share/logstash/pipeline/
+      - ./configs/logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
+      - ./mylogs.log:/usr/share/logstash/mylogs.log
+     # - ./configs/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml <-- Disabled for now, as this was causing problem with logstash-to-elasticsearch connection
     depends_on:
       - Elasticsearch
     ports:
-    - '9600:9600'
+      - '9600:9600'
     environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"    
+      LS_JAVA_OPTS: "-Xmx512m -Xms512m"  
     networks:
-      - fablo_network_202308300640_basic
+      - fabric_test
 
   Kibana:
     image: docker.elastic.co/kibana/kibana:7.17.0-arm64
@@ -47,7 +47,7 @@ services:
     depends_on:
       - Elasticsearch  
     networks:
-      - fablo_network_202308300640_basic
+      - fabric_test
 
   logspout:
     image: my-custom-logspout:latest  
@@ -59,11 +59,27 @@ services:
       - ROUTE_URIS=logstash+tcp://logstash:5000 
       - LOGSPOUT=ignore
     networks:
-      - fablo_network_202308300640_basic
+      - fabric_test
+
+  CouchDB:
+    image: couchdb:latest
+    container_name: couchdb
+    restart: always
+    ports:
+      - '5984:5984'
+      - '5986:5986'
+    environment:
+      COUCHDB_USER: "admin"
+      COUCHDB_PASSWORD: "abc"
+    volumes:
+      - couchdb_data:/opt/couchdb/data
+    networks:
+      - fabric_test
 
 volumes:
   elastic_data: {}
+  couchdb_data: {}
 
 networks:
-  fablo_network_202308300640_basic:
+  fabric_test:
     external: true
