@@ -16,7 +16,10 @@ Step 2: Docker Pipeline Activation
 
 Navigate to /External-Service (ELK) and execute the command `docker-compose up -d` to activate the Docker Pipeline. This pipeline, comprising Logstash and Logspout, is configured to organize logs from peer and orderer containers into distinct pipelines. The logs are then stored in a CouchDB database.
 
-Once the Docker Pipeline is running, proceed to execute the Python Analysis Script for log processing and visualization of the system's performance. The script generates various diagrams such as Stacked Line charts and Sunburst charts based on the collected logs.
+Once the Docker Pipeline is running, proceed to execute the Python Analysis Script for log processing and visualization of the system's performance. The script generates various diagrams such as Timeline Block Figure and Sunburst charts based on the collected logs.
+
+Here is example of Timeline Block Figure for Commit Duration:
+![plotFig](./plotExample.png)
 
 ## ❄️ Introducing New Log Lines for Processing in Our Service
 

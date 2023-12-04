@@ -82,7 +82,7 @@ try:
             ))
 
     fig.update_layout(
-        title='Timeline Block Figure',
+        title='Timeline Block Figure for Commit Duration',
         xaxis=dict(title='Time (milliseconds)'),
         yaxis=dict(title='Task'),
         showlegend=True,
