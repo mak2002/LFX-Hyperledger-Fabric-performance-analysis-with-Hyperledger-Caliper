@@ -19,7 +19,7 @@ Navigate to /External-Service (ELK) and execute the command `docker-compose up -
 Once the Docker Pipeline is running, proceed to execute the Python Analysis Script for log processing and visualization of the system's performance. The script generates various diagrams such as Timeline Block Figure and Sunburst charts based on the collected logs.
 
 Here is example of Timeline Block Figure for Commit Duration:
-![plotFig](./plotExample.png)
+![Timeline Block Bigure for Commit Duration](./plotExample.png)
 
 ## ❄️ Introducing New Log Lines for Processing in Our Service
 
